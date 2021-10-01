@@ -29,3 +29,14 @@
     font-size: x-large;
     font-weight: bold;
 }
+
+div.left-align {
+    width: 45%;
+    float: left;
+}
+
+div.right-align {
+    width: 45%;
+    margin: 0 auto;
+    float: right;
+}
