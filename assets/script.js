@@ -1,4 +1,3 @@
-console.log("hello");
 var options = {
     "apikey": "ntjbOl80",
     "objectType": "animals",
@@ -14,14 +13,25 @@ var options = {
             "animalName",
             "animalSpecies",
             "animalBreed",
-            "animalThumbnailUrl"
+            "animalThumbnailUrl",
+            "animalLocation"
         ],
         "filters": [
             {
                 "fieldName": "animalStatus",
                 "operation": "equals",
                 "criteria": "Available"
-            }
+            }, 
+            {
+                "fieldName": "animalLocationDistance",
+                "operation": "radius",
+                "criteria": "50"
+            }, 
+            {
+                "fieldName": "animalLocation",
+                "operation": "equals",
+                "criteria": "78704"
+            },
         ]
     }
 };
@@ -36,3 +46,15 @@ var res = fetch('https://api.rescuegroups.org/http/v2.json', {
         console.log(data);
         debugger;
     });
+
+var res = fetch('https://catfact.ninja/fact', {
+   
+    }).then(function(response) {
+        debugger;
+        return response.json();
+    }).then(function(data) {
+        console.log(data);
+        debugger;
+    });
+
+   
