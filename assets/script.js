@@ -53,8 +53,17 @@ var res = fetch('https://catfact.ninja/fact', {
     }).then(function(response) {
         
         return response.json();
-    }).then(function(data) {
-        console.log(data);
+    })
+    .then(function(response) {
+            console.log(response.data[1]);
+            var responseContainerEl = document.querySelector('#response-container');
+            responseContainerEl.innerHTML = '';
+            var fact = document.createElement('fact');
+            fact.setAttribute('src', response.data[1]);
+            responseContainerEl.appendChild(fact);
+          });
+      
+      
     
     });
 
