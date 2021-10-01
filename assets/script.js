@@ -1,3 +1,4 @@
+
 var options = {
     "apikey": "ntjbOl80",
     "objectType": "animals",
@@ -50,11 +51,11 @@ var res = fetch('https://api.rescuegroups.org/http/v2.json', {
 var res = fetch('https://catfact.ninja/fact', {
    
     }).then(function(response) {
-        debugger;
+        
         return response.json();
     }).then(function(data) {
         console.log(data);
-        debugger;
+    
     });
 
     var res = fetch('https://api.thecatapi.com/v1/images/search', {
