@@ -6,27 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   
 <head>
+  <title>Pet Search</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
- <title>Pet Search</title>
+    <link rel="stylesheet" href="assets/style.css">
+ 
     
 </head>
   
   <body>
     <header>
       <section class="hero is-small is-primary">
-        <div class="hero-body">
-          <p class="title">
+        <div class="hero-body ">
+          <p class="title header-text">
             Pet Search
           </p>
-          <p class="subtitle">
+          <p class="subtitle header-text">
             Search here for your next furry friend!
           </p>
         </div>
       </section>
     </header>
     
-
-<body>
 
   <form>
     <div class="field">
@@ -62,7 +62,47 @@
       </div>
     </div>
   </form>
-  <script src="></script>
+  <script>
+    var options = {
+    "apikey": "ntjbOl80",
+    "objectType": "animals",
+    "objectAction": "publicSearch",
+    "search" : {
+        "calcFoundRows": "Yes",
+        "resultStart": 0,
+        "resultLimit": 20,
+        "resultSort": "animalID",
+        "fields": [
+            "animalID",
+            "animalOrgID",
+            "animalName",
+            "animalSpecies",
+            "animalBreed",
+            "animalThumbnailUrl"
+        ],
+        "filters": [
+            {
+                "fieldName": "animalStatus",
+                "operation": "equals",
+                "criteria": "Available"
+            }
+        ]
+    }
+};
+
+
+var res = fetch('https://api.rescuegroups.org/http/v2.json', { 
+    method: 'post',
+    body: JSON.stringify(options)
+    
+    }).then(function(response) {
+        debugger;
+        return response.json();
+    }).then(function(data) {
+        console.log(data);
+        debugger;
+    });
+  </script>
 </body>
 
 </html>
