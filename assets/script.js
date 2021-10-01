@@ -48,32 +48,35 @@ var res = fetch('https://api.rescuegroups.org/http/v2.json', {
         debugger;
     });
 
-var res = fetch('https://catfact.ninja/fact', {
-   
-    }).then(function(response) {
-        
-        return response.json();
-    })
-    .then(function(response) {
-            console.log(response.data[1]);
-            var responseContainerEl = document.querySelector('#response-container');
-            responseContainerEl.innerHTML = '';
-            var fact = document.createElement('fact');
-            fact.setAttribute('src', response.data[1]);
-            responseContainerEl.appendChild(fact);
-          });
-      
-      
     
-    });
+   
+    function getCatFact() {
+        var res = fetch('https://catfact.ninja/fact', {
+
+        })
+            .then(function (response) {
+    
+            return response.json();
+        })
+            .then(function (response) {
+                console.log(response.fact);
+                var responseContainerEl = document.querySelector('#response-container');
+                responseContainerEl.innerHTML = '';
+                var fact = document.createElement('div');
+                fact.setAttribute('fact');
+                fact.innerHTML = response.fact;
+                responseContainerEl.appendChild(fact);
+            });
+    }
+
 
     var res = fetch('https://api.thecatapi.com/v1/images/search', {
    
-    }).then(function(response) {
+    }).then(function (response) {
         debugger;
         return response.json();
-    }).then(function(data) {
+    }).then(function (data) {
         console.log(data);
         debugger;
     });
-   
+
