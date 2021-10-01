@@ -6,48 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <script>
-        var options = {
-            "apikey": "ntjbOl80",
-            "objectType": "animals",
-            "objectAction": "publicSearch",
-            "search": {
-                "calcFoundRows": "Yes",
-                "resultStart": 0,
-                "resultLimit": 20,
-                "resultSort": "animalID",
-                "fields": [
-                    "animalID",
-                    "animalOrgID",
-                    "animalName",
-                    "animalSpecies",
-                    "animalBreed",
-                    "animalThumbnailUrl"
-                ],
-                "filters": [{
-                    "fieldName": "animalStatus",
-                    "operation": "equals",
-                    "criteria": "Available"
-                }]
-            }
-        };
-        var res = fetch('https://api.rescuegroups.org/http/v2.json', {
-            method: 'post',
-            mode: 'cors',
-            body: JSON.stringify(options)
-        }).then(function(response) {
-            debugger;
-            return response.json();
-        }).then(function(data) {
-            console.log(data);
-            debugger;
-        });
-        React
-        Reply
-    </script>
-
-
-
     <head>
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
@@ -98,7 +56,7 @@
         <!-- Center -->
         <form class="box">
             <div class="flex-item" class="right-align">
-                <p class="font">Click me for dog facts</p>
+                <p class="font">Click me for cat facts</p>
             </div>
         </form>
 
