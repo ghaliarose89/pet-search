@@ -57,4 +57,13 @@ var res = fetch('https://catfact.ninja/fact', {
         debugger;
     });
 
+    var res = fetch('https://api.thecatapi.com/v1/images/search', {
+   
+    }).then(function(response) {
+        debugger;
+        return response.json();
+    }).then(function(data) {
+        console.log(data);
+        debugger;
+    });
    
