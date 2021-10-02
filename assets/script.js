@@ -31,7 +31,7 @@ var options = {
             {
                 "fieldName": "animalLocation",
                 "operation": "equals",
-                "criteria": "78704"
+                "criteria": "77056"
             },
         ]
     }
@@ -63,7 +63,6 @@ var res = fetch('https://api.rescuegroups.org/http/v2.json', {
                 var responseContainerEl = document.querySelector('#response-container');
                 responseContainerEl.innerHTML = '';
                 var fact = document.createElement('div');
-                fact.setAttribute('fact');
                 fact.innerHTML = response.fact;
                 responseContainerEl.appendChild(fact);
             });
