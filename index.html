@@ -2,46 +2,86 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="assets/style.css" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
-    <head>
-        <link rel="stylesheet" href="assets/style.css" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <title>Cat Search</title>
 
-        <title>Cat Search</title>
-
-    </head>
+  </head>
 
 <body>
-    <header>
-        <section class="hero is-small is-primary">
-            <div class="hero-body">
-                <p class="title">
-                    Cat Search
-                </p>
-                <p class="subtitle">
-                    Search here for your next furry friend!
-                </p>
-            </div>
-        </form>
-   
-
-    </body>
-
-    <footer class="footer">
-        <div class="content has-text-centered">
-            <p>
-                <strong>Cat Search</strong> by Ghalia Mukhalalaltti, Jennifer Devane, and Keyla Meregildo.
-            </p>
-        </section>
-    </header>
-
-    <!--Left side-->
-    <div class="box">
-        <div class="field" class="left">
-            <label class="label">Search For</label>
+  <header>
+    <section class="hero is-small is-primary">
+      <div class="hero-body">
+        <p class="title header-title">
+          Pet Search
+        </p>
+        <p class="subtitle header-title">
+          Search here for your next furry friend!
+        </p>
+      </div>
+  </header>
+  <!-- Form side -->
+  <div  id= "form" class="form">
+    
+    <div class="container">
+      <label class="label">Enter your Zip code</label>
+      <div class="control has-icons-left has-icons-right">
+        <input class="input is-success" type="text" placeholder="ZipCode">
+        <span class="icon is-small is-left">
+          <i class="fas fa-user"></i>
+        </span>
+        <span class="icon is-small is-right">
+          <i class="fas fa-check"></i>
+        </span>
+      </div>
+    </div>
+    
+    <div class="container">
+      <label class="label">Select your Pet</label>
+      <div class="control">
+        <div class="select">
+          <select> 
+            <option>Cats</option>
+            <option>Dogs</option>
+          </select>
         </div>
+      </div>
+    </div>
+    
+    <div class="container is-grouped">
+      <div class="control">
+        <button class="button btn is-link">Search Now</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- middle side -->
+  <div class="img-box">
+  <div >
+    <img src="./assets/picuters/Yellow_Cat_Eye_Superb_Picture.jpg" alt="cat-pic" class="img" id="imgCat"/>
+    <img src="./assets/picuters/DOG.jpg" alt="dog-pic" class="img" id="imgDog"/>
+  </div>
+  <div>
+    <p class="fact" id="fact">Lorem ipsum dolor sit amet consectetur adipisicing elit.  </p>
+  </div>
+</div>
+
+  <footer>
+    <div class="content has-text-centered">
+      <p>
+        <strong class="footertitle">Pet Search</strong> by Ghalia Mukhalalaltti, Jennifer Devane, and Keyla Meregildo.
+      </p>
+    </footer>
+
+
+      
+</body>
+
+<script src="assets/script.js"></script>
 
 </html>
