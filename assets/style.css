@@ -1,4 +1,13 @@
-
+body{
+    background-image: url(./picuters/360_F_298201821_e90YxH0f6FBwOvcKhynlwF8sNYxlCMsg.jpg);
+    background-size: contain;
+}
+.hr {
+    background-color: thistle;
+    margin-top: 0px;
+    height: 4px;
+    /* margin: 1.5rem 0; */
+}
 
 .title {
         color: thistle;
@@ -43,7 +52,7 @@ footer{
 }
 .fact {
     border-radius: 20px;
-    border:springgreen 3px solid;
+    border:thistle 3px solid;
     height: 100px;
     width: 1000px;
 }
