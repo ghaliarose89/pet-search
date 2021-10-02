@@ -1,6 +1,9 @@
 body{
-    background-image: url(./picuters/360_F_298201821_e90YxH0f6FBwOvcKhynlwF8sNYxlCMsg.jpg);
-    background-size: contain;
+    background-image: url(./picuters/bk.jpg);
+    background-size: cover;
+}
+header{
+    padding: 0px;
 }
 .hr {
     background-color: thistle;
@@ -8,6 +11,8 @@ body{
     height: 4px;
     /* margin: 1.5rem 0; */
 }
+
+
 
 .title {
         color: thistle;
@@ -24,7 +29,7 @@ footer{
     text-align: center;
 }
 .footertitle{
-    color: mediumseagreen;
+    color:#00d1b2;
 }
 
 .form{
@@ -36,9 +41,7 @@ footer{
 .select {
     margin-bottom: 15px;
 }
-.btn{
-    background-color: #4CAF50;
-}
+
 .img-box {
     margin-left: 25%;
 }
@@ -53,6 +56,7 @@ footer{
 .fact {
     border-radius: 20px;
     border:thistle 3px solid;
+    background-color: #00d1b2;;
     height: 100px;
     width: 1000px;
 }
