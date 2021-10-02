@@ -33,5 +33,47 @@
         <div class="field" class="left">
             <label class="label">Search For</label>
         </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <label class="radio">
+                <input type="radio" name="male">Male</label>
+            <label class="radio">
+                <input type="radio" name="Female">Female</label>
+            <label class="label">Zip Code</label>
+            <input type="text" id="zipCode" name="zip-code">
+        </div>
+    </div>
+
+    <div class="field is-grouped">
+        <div class="control">
+            <button onclick="getCats()" class="button">Search</button>
+        </div>
+    </div>
+    </div>
+
+    <div id="cats-container"></div>
+
+    <!-- Center -->
+    <button class ="button" onclick="getCatFact()">click me for cat facts</button>
+    <div id="response-container"></div>
+
+
+
+ 
+
+
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Cat Search</strong> by Ghalia Mukhalalaltti, Jennifer Devane, and Keyla Meregildo.
+            </p>
+        </div>
+    </footer>
+</body>
+
+<script src="assets/script.js"></script>
 
 </html>
