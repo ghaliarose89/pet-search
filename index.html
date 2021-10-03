@@ -5,9 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-  <link rel="stylesheet" href="assets/style.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="assets/style.css" />
 
   <title>Pet Search</title>
 
@@ -39,7 +38,7 @@
       <div class="container">
         <label class="label" style="font-size: 20px; color: azure">Enter your Zip code</label>
         <div class="control has-icons-left has-icons-right">
-          <input class="input is-success" type="text" placeholder="ZipCode"id="ZipCode" name="zip-code">
+          <input class="input is-success" type="text" placeholder="ZipCode"id="Zip-Code" name="zip-code">
           <span class="icon is-small is-right">
             <i class="fas fa-check"></i>
           </span>
@@ -50,9 +49,9 @@
         <label class="label" style="font-size: 20px; color: azure;">Select your Pet</label>
         <div class="control">
           <div class="select">
-            <select>
-              <option style="font-size: 20px; color: black;">Cats</option>
-              <option style="font-size: 20px; color: black;">Dogs</option>
+            <select id="animal-type">
+              <option style="font-size: 20px; color: black;" value="Cat">Cats</option>
+              <option style="font-size: 20px; color: black;" value="Dog">Dogs</option>
             </select>
           </div>
         </div>
@@ -60,7 +59,7 @@
 
       <div class="container is-grouped">
         <div class="control">
-          <button onclick="getCats()" class="button is-link btn" 
+          <button id="search-now" class="button is-link btn" 
             style="color: azure; background-color:thistle; font-size: 25; font-weight:bold ;">Search Now <img
               src="https://img.icons8.com/ios-glyphs/30/000000/pets.png" /></button>
         </div>
@@ -106,7 +105,8 @@
 
 
 </body>
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="assets/script.js"></script>
 
 </html>
