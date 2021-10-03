@@ -230,4 +230,4 @@ function catImg (){
    
 };
 
-setInterval( catImg , 2000);
+setInterval( catImg , 1000);
