@@ -10,7 +10,11 @@ body{
     /* margin: 1.5rem 0; */
 }
 
-
+.container-flex{
+    display: flex;
+    align-items:flex-start;
+    flex-direction: row;
+}
 
 .title {
         color: thistle;
@@ -35,16 +39,17 @@ footer{
 
 .form{
     
-    height: 100px;   
-    width: 150px;
+    width: 200px;
     margin: 15px;
+    margin-top: 35px;
 } 
 .select {
     margin-bottom: 15px;
 }
 
 .img-box {
-    margin-left: 25%;
+    margin-left: 15%;
+    
 }
 
 
@@ -53,6 +58,7 @@ footer{
     border:thistle 3px solid;
     width: 500px;
     height: 300px;
+    margin-right: 15px;
 
 
 }
@@ -63,6 +69,8 @@ footer{
     background-color: #00d1b2;;
     height: 100px;
     width: 1000px;
+    margin-left: 28%;
+    margin-top: 20px;
 }
 
 .h2{

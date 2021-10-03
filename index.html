@@ -14,16 +14,16 @@
 </head>
 
 <body>
-  <header >
-    <section class="hero is-small is-primary"style="padding: 0px;" >
+  <header>
+    <section class="hero is-small is-primary" style="padding: 0px;">
       <div class="hero-body" style="margin-top: 0px; padding-top: 0px;">
-        
-        <p style ="color: thistle; font-size: 40px; font-weight: bolder; ">
-          <img src="https://img.icons8.com/glyph-neue/30/000000/cat-footprint.png"/>
+
+        <p style="color: thistle; font-size: 40px; font-weight: bolder; ">
+          <img src="https://img.icons8.com/glyph-neue/30/000000/cat-footprint.png" />
           Pet Search
-          <img src="https://img.icons8.com/glyph-neue/30/000000/cat-footprint.png"/>
+          <img src="https://img.icons8.com/glyph-neue/30/000000/cat-footprint.png" />
         </p>
-        <p class="subtitle header-title" style = " font-weight:bolder; font-size:20;">
+        <p class="subtitle header-title" style=" font-weight:bolder; font-size:20;">
           Search here for your next furry friend!
         </p>
 
@@ -34,66 +34,70 @@
   </header>
 
   <!-- Form side -->
-  <div id="form" class="form">
-
-    <div class="container">
-      <label class="label">Enter your Zip code</label>
-      <div class="control has-icons-left has-icons-right">
-        <input class="input is-success" type="text" placeholder="ZipCode">
-        <span class="icon is-small is-left">
-          <i class="fas fa-user"></i>
-        </span>
-        <span class="icon is-small is-right">
-          <i class="fas fa-check"></i>
-        </span>
-      </div>
-    </div>
-
-    <div class="container">
-      <label class="label">Select your Pet</label>
-      <div class="control">
-        <div class="select">
-          <select>
-            <option><img src="https://img.icons8.com/ios-glyphs/30/000000/cat.png"/>Cats</option>
-            <option>Dogs</option>
-          </select>
+  <div class="container-flex">
+    <div id="form" class="form ">
+      <div class="container">
+        <label class="label" style="font-size: 20px; color: azure">Enter your Zip code</label>
+        <div class="control has-icons-left has-icons-right">
+          <input class="input is-success" type="text" placeholder="ZipCode">
+          <span class="icon is-small is-right">
+            <i class="fas fa-check"></i>
+          </span>
         </div>
       </div>
-    </div>
 
-    <div class="container is-grouped">
-      <div class="control">
-        <button class="button  is-link btn" style="color: aquamarine; background-color:thistle; font-size: 25; font-weight:bold ;">Search Now <img src="https://img.icons8.com/ios-glyphs/30/000000/pets.png"/></button>
+      <div class="container">
+        <label class="label" style="font-size: 20px; color: azure;">Select your Pet</label>
+        <div class="control">
+          <div class="select">
+            <select>
+              <option style="font-size: 20px; color: black;">Cats</option>
+              <option style="font-size: 20px; color: black;">Dogs</option>
+            </select>
+          </div>
+        </div>
       </div>
 
+      <div class="container is-grouped">
+        <div class="control">
+          <button class="button  is-link btn"
+            style="color: azure; background-color:thistle; font-size: 25; font-weight:bold ;">Search Now <img
+              src="https://img.icons8.com/ios-glyphs/30/000000/pets.png" /></button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- middle side -->
+    <div class="img-box container-flex">
+      <div class="container-flex">
+        <img src="./assets/picuters/Yellow_Cat_Eye_Superb_Picture.jpg" alt="cat-pic" class="img" id="imgCat" />
+        <img src="./assets/picuters/DOG.jpg" alt="dog-pic" class="img" id="imgDog" />
+      </div>
+    </div>
+
+  </div>
+  <div>
+    <div class="container-flex">
+      <p class="fact " id="fact">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+    </div>
+    <!-- History Section -->
+    <div class="h2" class="container-flex">
+      <p style="color: aqua; font-size: 25px; margin: 15px; margin-top: 0px;">Search History</p>
     </div>
   </div>
 
-  <!-- middle side -->
-  <div class="img-box">
-    <div>
-      <img src="./assets/picuters/Yellow_Cat_Eye_Superb_Picture.jpg" alt="cat-pic" class="img" id="imgCat" />
-      <img src="./assets/picuters/DOG.jpg" alt="dog-pic" class="img" id="imgDog" />
-    </div>
-    <div>
-      <p class="fact" id="fact">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-    </div>
-  </div>
-  <!-- History Section -->
-  <div class="h2">
-    <p style="color: aqua; font-size: 25px; margin: 15px; margin-top: 0px;" >Search History</p>
-  </div>
 
   <footer>
     <div class="content has-text-centered">
-    
+
       <p style="padding-top: 10px;">
-        <img src="https://img.icons8.com/glyph-neue/30/000000/cat-footprint.png"/>
+        <img src="https://img.icons8.com/glyph-neue/30/000000/cat-footprint.png" />
         <strong class="footertitle">Pet Search Made with ❤️️ By: </strong> Ghalia Mukhalalaltti, Jennifer Devane, and
-        Keyla Meregildo. <img src="https://img.icons8.com/glyph-neue/30/000000/cat-footprint.png"/>
+        Keyla Meregildo. <img src="https://img.icons8.com/glyph-neue/30/000000/cat-footprint.png" />
       </p>
-      
-     
+
+
   </footer>
 
 
