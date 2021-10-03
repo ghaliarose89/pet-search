@@ -39,7 +39,7 @@
       <div class="container">
         <label class="label" style="font-size: 20px; color: azure">Enter your Zip code</label>
         <div class="control has-icons-left has-icons-right">
-          <input class="input is-success" type="text" placeholder="ZipCode">
+          <input class="input is-success" type="text" placeholder="ZipCode"id="ZipCode" name="zip">
           <span class="icon is-small is-right">
             <i class="fas fa-check"></i>
           </span>
@@ -60,7 +60,7 @@
 
       <div class="container is-grouped">
         <div class="control">
-          <button class="button  is-link btn"
+          <button onclick="getCats()" class="button is-link btn" 
             style="color: azure; background-color:thistle; font-size: 25; font-weight:bold ;">Search Now <img
               src="https://img.icons8.com/ios-glyphs/30/000000/pets.png" /></button>
         </div>
@@ -71,15 +71,17 @@
     <!-- middle side -->
     <div class="img-box container-flex">
       <div class="container-flex">
-        <img src="./assets/picuters/Yellow_Cat_Eye_Superb_Picture.jpg" alt="cat-pic" class="img" id="imgCat" />
+      <div class="img" id="imgCat"></div>
         <img src="./assets/picuters/DOG.jpg" alt="dog-pic" class="img" id="imgDog" />
       </div>
     </div>
 
   </div>
   <div>
-    <div class="container-flex">
-      <p class="fact " id="fact">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+    <div class="container-flex" id="cats-container">
+      <div class="fact2" id="fact2"><button onclick="getCatFact()">click me for cat facts</button>
+        <div id="response-container"></div>
+      </div>
     </div>
     <!-- History Section -->
     <div class="h2" class="container-flex">
