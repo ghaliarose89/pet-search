@@ -138,7 +138,8 @@
 //         });
 //     }
     
-var zipCodeEl = document.getElementById('zipCode');        
+var zipCodeEl = document.getElementById('zipCode');  
+  
        
 function getCatFact() {
     var res = fetch('https://catfact.ninja/fact')
