@@ -75,7 +75,7 @@
          });
      }
     
-        
+var zipCodeEl = document.getElementById('zipCode');        
        
 function getCatFact() {
     var res = fetch('https://catfact.ninja/fact')
@@ -96,8 +96,9 @@ function getCatFact() {
 
 }
     
-    
 
+
+        
 function catImg (){
     var apiCatImg= fetch ('https://aws.random.cat/meow')
     .then (function(response){
@@ -111,4 +112,74 @@ function catImg (){
    
 };
 
-setInterval( catImg , 1000);
+function dogImg (){
+    var apidogImg= fetch ('https://dog.ceo/api/breeds/image/random')
+    .then (function(response){
+        return response.json();
+       
+    })
+    .then(function(data) {
+        var imgDog = document.getElementById('imgDog');
+        imgDog.src= data.message;        
+    });
+   
+};
+
+
+
+
+setInterval( catImg , 2000);
+setInterval( dogImg , 2000);
+
+function getUserSearch(pet,zip){
+    var zipCode= zipCodeEl.value.trim();
+    var options = {
+        "apikey": "ntjbOl80",
+        "objectType": "animals",
+        "objectAction": "publicSearch",
+        "search": {
+            "calcFoundRows": "Yes",
+            "resultStart": 0,
+            "resultLimit": 50,
+            "fields": [
+                "animalID",
+                "animalOrgID",
+                "animalName",
+                "animalSpecies",
+                "animalBreed",
+                "animalThumbnailUrl",
+                "animalLocation"
+            ],
+            "filters": [
+                {
+                    "fieldName": "animalStatus",
+                    "operation": "equals",
+                    "criteria": "Available"
+                },
+                {
+                    "fieldName": "animalLocation",
+                    "operation": "equals",
+                    "criteria": "zipcode"
+                },
+            ]
+        }}
+
+
+var res = fetch('https://api.rescuegroups.org/http/v2.json', { 
+method: 'post',
+body: JSON.stringify(options)
+
+}).then(function(response) {
+   
+    return response.json();
+}).then(function(data) {
+    console.log(data);
+   
+}); 
+
+
+
+}
+
+
+
