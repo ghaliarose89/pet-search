@@ -2,9 +2,7 @@ body{
     background-image: url(./picuters/bk.jpg);
     background-size: cover;
 }
-header{
-    padding: 0px;
-}
+
 .hr {
     background-color: thistle;
     margin-top: 0px;
@@ -24,12 +22,15 @@ footer{
     color: hotpink;
     background-color:thistle;
     margin-top: 15%;
-    height: 50px;
+    height: 66px;
     font-size: larger;
     text-align: center;
 }
 .footertitle{
     color:#00d1b2;
+}
+.footer-aligh {
+    margin-top: 50px;
 }
 
 .form{
@@ -45,6 +46,8 @@ footer{
 .img-box {
     margin-left: 25%;
 }
+
+
 .img{
     border-radius: 20px;
     border:thistle 3px solid;
@@ -53,10 +56,15 @@ footer{
 
 
 }
+
 .fact {
     border-radius: 20px;
     border:thistle 3px solid;
     background-color: #00d1b2;;
     height: 100px;
     width: 1000px;
+}
+
+.h2{
+    size: 50px;
 }

@@ -5,32 +5,37 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
   <link rel="stylesheet" href="assets/style.css" />
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
   <title>Pet Search</title>
 
-  </head>
+</head>
 
 <body>
-  <header>
-    <section class="hero is-small is-primary">
-      <div class="hero-body">
-        <p class="title header-title">
+  <header >
+    <section class="hero is-small is-primary"style="padding: 0px;" >
+      <div class="hero-body" style="margin-top: 0px; padding-top: 0px;">
+        
+        <p style ="color: thistle; font-size: 40px; font-weight: bolder; ">
+          <img src="https://img.icons8.com/glyph-neue/30/000000/cat-footprint.png"/>
           Pet Search
+          <img src="https://img.icons8.com/glyph-neue/30/000000/cat-footprint.png"/>
         </p>
-        <p class="subtitle header-title">
+        <p class="subtitle header-title" style = " font-weight:bolder; font-size:20;">
           Search here for your next furry friend!
         </p>
-       
+
       </div>
-      </section>
-      <hr class="hr" >
+    </section>
+    <hr class="hr">
+    <i class="fa-solid fa-paw-simple"></i>
   </header>
- 
+
   <!-- Form side -->
-  <div  id= "form" class="form">
-    
+  <div id="form" class="form">
+
     <div class="container">
       <label class="label">Enter your Zip code</label>
       <div class="control has-icons-left has-icons-right">
@@ -43,22 +48,22 @@
         </span>
       </div>
     </div>
-    
+
     <div class="container">
       <label class="label">Select your Pet</label>
       <div class="control">
         <div class="select">
-          <select> 
-            <option>Cats</option>
+          <select>
+            <option><img src="https://img.icons8.com/ios-glyphs/30/000000/cat.png"/>Cats</option>
             <option>Dogs</option>
           </select>
         </div>
       </div>
     </div>
-    
+
     <div class="container is-grouped">
       <div class="control">
-        <button class="button  is-link btn">Search Now</button>
+        <button class="button  is-link btn" style="color: aquamarine; background-color:thistle; font-size: 25; font-weight:bold ;">Search Now <img src="https://img.icons8.com/ios-glyphs/30/000000/pets.png"/></button>
       </div>
 
     </div>
@@ -66,24 +71,33 @@
 
   <!-- middle side -->
   <div class="img-box">
-  <div >
-    <img src="./assets/picuters/Yellow_Cat_Eye_Superb_Picture.jpg" alt="cat-pic" class="img" id="imgCat"/>
-    <img src="./assets/picuters/DOG.jpg" alt="dog-pic" class="img" id="imgDog"/>
+    <div>
+      <img src="./assets/picuters/Yellow_Cat_Eye_Superb_Picture.jpg" alt="cat-pic" class="img" id="imgCat" />
+      <img src="./assets/picuters/DOG.jpg" alt="dog-pic" class="img" id="imgDog" />
+    </div>
+    <div>
+      <p class="fact" id="fact">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+    </div>
   </div>
-  <div>
-    <p class="fact" id="fact">Lorem ipsum dolor sit amet consectetur adipisicing elit.  </p>
+  <!-- History Section -->
+  <div class="h2">
+    <p style="color: aqua; font-size: 25px; margin: 15px; margin-top: 0px;" >Search History</p>
   </div>
-</div>
 
   <footer>
     <div class="content has-text-centered">
-      <p>
-        <strong class="footertitle">Pet Search Made with ❤️️ By: </strong>  Ghalia Mukhalalaltti, Jennifer Devane, and Keyla Meregildo.
+    
+      <p style="padding-top: 10px;">
+        <img src="https://img.icons8.com/glyph-neue/30/000000/cat-footprint.png"/>
+        <strong class="footertitle">Pet Search Made with ❤️️ By: </strong> Ghalia Mukhalalaltti, Jennifer Devane, and
+        Keyla Meregildo. <img src="https://img.icons8.com/glyph-neue/30/000000/cat-footprint.png"/>
       </p>
-    </footer>
-
-
       
+     
+  </footer>
+
+
+
 </body>
 
 <script src="assets/script.js"></script>
