@@ -170,53 +170,9 @@
 //             debugger;
             
 //         });
+var zipCodeEl = document.getElementById('zipCode');       
+
         
-
-        var options = {
-            "apikey": "ntjbOl80",
-            "objectType": "animals",
-            "objectAction": "publicSearch",
-            "search": {
-                "calcFoundRows": "Yes",
-                "resultStart": 0,
-                "resultLimit": 50,
-                "fields": [
-                    "animalID",
-                    "animalOrgID",
-                    "animalName",
-                    "animalSpecies",
-                    "animalBreed",
-                    "animalThumbnailUrl",
-                    "animalLocation"
-                ],
-                "filters": [
-                    {
-                        "fieldName": "animalStatus",
-                        "operation": "equals",
-                        "criteria": "Available"
-                    },
-                    {
-                        "fieldName": "animalLocation",
-                        "operation": "equals",
-                        "criteria": "77441"
-                    },
-                ]
-            }}
-
-
-var res = fetch('https://api.rescuegroups.org/http/v2.json', { 
-    method: 'post',
-    body: JSON.stringify(options)
-    
-    }).then(function(response) {
-       
-        return response.json();
-    }).then(function(data) {
-        console.log(data);
-       
-    }); 
-    
-
 function catImg (){
     var apiCatImg= fetch ('https://aws.random.cat/meow')
     .then (function(response){
@@ -230,4 +186,57 @@ function catImg (){
    
 };
 
+var zipCodeEl = document.getElementById('zipCode');
+
+
 setInterval( catImg , 1000);
+
+function getUserSearch(pet,zip){
+    var zipCode= zipCodeEl.value.trim();
+    var options = {
+        "apikey": "ntjbOl80",
+        "objectType": "animals",
+        "objectAction": "publicSearch",
+        "search": {
+            "calcFoundRows": "Yes",
+            "resultStart": 0,
+            "resultLimit": 50,
+            "fields": [
+                "animalID",
+                "animalOrgID",
+                "animalName",
+                "animalSpecies",
+                "animalBreed",
+                "animalThumbnailUrl",
+                "animalLocation"
+            ],
+            "filters": [
+                {
+                    "fieldName": "animalStatus",
+                    "operation": "equals",
+                    "criteria": "Available"
+                },
+                {
+                    "fieldName": "animalLocation",
+                    "operation": "equals",
+                    "criteria": "zipcode"
+                },
+            ]
+        }}
+
+
+var res = fetch('https://api.rescuegroups.org/http/v2.json', { 
+method: 'post',
+body: JSON.stringify(options)
+
+}).then(function(response) {
+   
+    return response.json();
+}).then(function(data) {
+    console.log(data);
+   
+}); 
+
+
+
+}
