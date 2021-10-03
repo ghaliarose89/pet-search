@@ -138,7 +138,7 @@
 //         });
 //     }
     
-        
+var zipCodeEl = document.getElementById('zipCode');        
        
 function getCatFact() {
     var res = fetch('https://catfact.ninja/fact')
@@ -170,7 +170,7 @@ function getCatFact() {
 //             debugger;
             
 //         });
-var zipCodeEl = document.getElementById('zipCode');       
+  
 
         
 function catImg (){
@@ -186,10 +186,24 @@ function catImg (){
    
 };
 
-var zipCodeEl = document.getElementById('zipCode');
+function dogImg (){
+    var apidogImg= fetch ('https://dog.ceo/api/breeds/image/random')
+    .then (function(response){
+        return response.json();
+       
+    })
+    .then(function(data) {
+        var imgDog = document.getElementById('imgDog');
+        imgDog.src= data.message;        
+    });
+   
+};
 
 
-setInterval( catImg , 1000);
+
+
+setInterval( catImg , 2000);
+setInterval( dogImg , 2000);
 
 function getUserSearch(pet,zip){
     var zipCode= zipCodeEl.value.trim();
@@ -240,3 +254,6 @@ body: JSON.stringify(options)
 
 
 }
+
+
+
