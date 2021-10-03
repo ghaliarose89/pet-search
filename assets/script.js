@@ -140,24 +140,24 @@
     
         
        
-//         function getCatFact() {
-//             var res = fetch('https://catfact.ninja/fact', {
-    
-//             })
-//                 .then(function (response) {
-        
-//                 return response.json();
-//             })
-//                 .then(function (response) {
-//                     console.log(response.fact);
-//                     var responseContainerEl = document.querySelector('#response-container');
-//                     responseContainerEl.innerHTML = '';
-//                     var fact = document.createElement('div');
-//                     fact.innerHTML = response.fact;
-//                     responseContainerEl.appendChild(fact);
-//                 });
+function getCatFact() {
+    var res = fetch('https://catfact.ninja/fact')
 
-//         }
+    
+        .then(function (response) {
+
+            return response.json();
+        })
+         .then(function (response) {
+        console.log(response.fact);
+        var responseContainerEl = document.querySelector('#response-container');
+            responseContainerEl.innerHTML = '';
+            var fact = document.createElement('div');
+            fact.innerHTML = response.fact;
+            responseContainerEl.appendChild(fact);
+        });
+
+}
     
     
 //         var res = fetch('https://api.thecatapi.com/v1/images/search', {
