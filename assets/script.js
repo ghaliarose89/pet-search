@@ -109,8 +109,8 @@ function getDogFact() {
         
             method: 'post',
             dataType: "jsonp",
-            body: JSON.stringify(options),
-            Headers: cors,
+            headers: "Access-Control-Allow-Origin",
+             body: JSON.stringify
     
     
         }) .then(function (response) {
