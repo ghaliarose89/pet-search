@@ -1,9 +1,11 @@
-
-
-
-
+var animalType= document.getElementById('animal-type');
+var imgBox= document.getElementById('imgBox');
+var catFact= document.getElementById('cats-container');
+var resultContainer= document.getElementById('container');
+var zipCode = document.getElementById ('zip-Code');
+var historyBox = document.getElementById('history');
 function getCats() {
-     // get value of zipcode field
+     //get value of zipcode field
      let zip = document.getElementById('77056');
      let zipCode = zip.value;
      console.log(zipCode);
@@ -14,7 +16,7 @@ function getCats() {
          "search": {
              "calcFoundRows": "Yes",
              "resultStart": 0,
-             "resultLimit": 50,
+             "resultLimit": 8,
              "fields": [
                 "animalID",
                 "animalOrgID",
@@ -22,7 +24,8 @@ function getCats() {
                  "animalSpecies",
                  "animalBreed",
                 "animalThumbnailUrl",
-                "animalLocation"
+                "animalLocation",
+                
              ],
             "filters": [
                 {
@@ -38,8 +41,9 @@ function getCats() {
                  {
                      "fieldName": "animalLocation",
                      "operation": "equals",
-                     "criteria": "zipCode" // use user zipcode input in search
+                     "criteria": "77441" // use user zipcode input in search
                  },
+                 
              ]
          }
      };
@@ -130,11 +134,6 @@ function dogImg (){
 };
 
 
-
-var animalType= document.getElementById('animal-type');
-// var petType= animalType.value;
-// console.log(petType);
-
 function getUserSearch(){
     var petType=animalType.value;
     var options = {
@@ -144,7 +143,7 @@ function getUserSearch(){
         "search": {
             "calcFoundRows": "Yes",
             "resultStart": 0,
-            "resultLimit": 100,
+            "resultLimit": 8,
             "fields": [
                 "animalID",
                 "animalOrgID",
@@ -152,7 +151,8 @@ function getUserSearch(){
                 "animalSpecies",
                 "animalBreed",
                 "animalThumbnailUrl",
-                "animalLocation"
+                "animalLocation",
+                //"locationPhone"
             ],
             "filters": [
                 {
@@ -163,8 +163,13 @@ function getUserSearch(){
                 {
                     "fieldName": "animalSpecies",
                     "operation": "equals",
-                    "criteria": "petType"
+                    "criteria": "Cat"
                 },
+                // {
+                //     "fieldName": "locationPhone",
+                //     "operation": "equals",
+                //     "criteria": "Available"
+                //  },
             ]
         }}
 
@@ -174,19 +179,69 @@ method: 'post',
 body: JSON.stringify(options)
 
 }).then(function(response) {
+   return response.json();
+}).then(function(response) {
+    let cats = response.data
+    // make new empty array
+    let catsArray = []
+    for (const value in cats) {
+        // push in the cat objects
+        catsArray.push(cats[value])
+
+        }
+        var resultTitle=document.createElement('div');
+        resultTitle.className = "result-title";
+        resultContainer.appendChild(resultTitle);
+        
+        resultTitle.innerHTML="<h2> Future Pet List </h2><hr>";
+
+        console.log(catsArray);
+        // loop through the cat array and add the field values to the page
+        catsArray.forEach((cat) => {
+    var result=document.createElement('div');
+    resultContainer.removeClass=("img-box");
+    result.classList=("result-cards");
+    resultContainer.appendChild(result);
+   result.innerHTML='<p><strong> Cat Name:</strong> '+cat.animalName+'</p>';
+   result.innerHTML+='<p><strong> AnimalBreed:</strong> '+cat.animalBreed+'</p>';
+   result.innerHTML+='<p><strong> Zip Code:</strong> '+cat.animalLocation+'</p>';
+   result.innerHTML+='<p><strong> Picute:</strong><img src='+cat.animalThumbnailUrl+'+/>+</p>';
    
-    return response.json();
-}).then(function(data) {
-    console.log(data);
+ })
+
    
 }); 
 
+
+}
+
+ function saveSearch() {
+     var zip = zipCode.value.trim();
+     var searchArr = JSON.parse(localStorage.getItem("zipcode")) ||[];
+     searchArr.push(zip);
+     localStorage.setItem('zipcode',JSON.stringify(searchArr));
+     console.log(searchArr);
+    var histBtn = document.createElement('button');
+    histBtn.classList="btn hist-text";
+    histBtn.innerHTML= "<h3>Zip Code :"+zip+ "<h3>";
+    historyBox.appendChild(histBtn);
+     
+
+    
 }
 
 var searchBtn= document.getElementById('search-now');
-searchBtn.addEventListener('click', getUserSearch());
+searchBtn.addEventListener('click', function (){
+    clearInterval(catTimer);
+    clearInterval(dogTimer);
+    imgBox.innerHTML="";
+    catFact.innerHTML="";
+    saveSearch();
+    getUserSearch();
+   
+});
 
-setInterval( catImg , 2000);
-setInterval( dogImg , 2000);
+var catTimer = setInterval( catImg ,4000);
+var dogTimer = setInterval( dogImg ,4000);
 
 
