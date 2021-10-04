@@ -83,9 +83,7 @@ function getCats() {
          });
      }
     
-// var zipCodeEl = document.querySelector('Zip-Code');
-// var zip=zipCodeEl.value;
-// console.log(zip);
+
   
        
 function getCatFact() {
@@ -107,22 +105,27 @@ function getCatFact() {
 
 }
 function getDogFact() {
-    var res = fetch('https://dog-api.kinduff.com/api/facts')
-
+    fetch('https://dog-api.kinduff.com/api/facts', {
+        
+            method: 'post',
+            dataType: "jsonp",
+            body: JSON.stringify(options),
+            Headers: cors,
     
-        .then(function (response) {
+    
+        }) .then(function (response) {
 
-            return response.json();
-        })
-         .then(function (response) {
-        console.log(response.facts);
-        var responseContainerEl = document.querySelector('#response-container2');
-            responseContainerEl.innerHTML = '';
-            var facts = document.createElement('div');
-            facts.innerHTML = response.facts;
-            responseContainerEl.appendChild(facts);
-        });
-
+                return response.json();
+            })
+                .then(function (response) {
+                    console.log(response.facts);
+                    var responseContainerEl = document.querySelector('#response-container2');
+                    responseContainerEl.innerHTML = '';
+                    var facts = document.createElement('div');
+                    facts.innerHTML = response.facts;
+                    responseContainerEl.appendChild(facts);
+                });
+    
 }
    
 
