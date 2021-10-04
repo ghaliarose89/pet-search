@@ -38,7 +38,7 @@
       <div class="container">
         <label class="label" style="font-size: 20px; color: azure">Enter your Zip code</label>
         <div class="control has-icons-left has-icons-right">
-          <input class="input is-success " type="text" placeholder="ZipCode" id="Zip-Code" name="zip-code">
+          <input class="input is-success " type="text" placeholder="ZipCode" id="zip-Code" name="zipCode">
           <span class="icon is-small is-right">
             <i class="fas fa-check"></i>
           </span>
@@ -50,6 +50,7 @@
         <div class="control">
           <div class="select">
             <select id="animal-type">
+              <option style="font-size: 20px; color: black;" value=""></option>
               <option style="font-size: 20px; color: black;" value="Cat">Cats</option>
               <option style="font-size: 20px; color: black;" value="Dog">Dogs</option>
             </select>
@@ -71,7 +72,7 @@
     <div class="img-box container-flex columns is-mobile" id="container">
       <div class="container-flex" id="imgBox">
         <img src="./assets/picuters/Yellow_Cat_Eye_Superb_Picture.jpg" alt="cat-pic" class="img" id="imgCat" />
-        <img src="./assets/picuters/DOG.jpg" alt="dog-pic" class="img" id="imgDog" />
+        <img src="./assets/picuters/DOG.jpg" alt="dog-pic" class="img" id="imgDog"  />
       </div>
     </div>
 
@@ -85,7 +86,7 @@
     </div>
 
     <!-- History Section -->
-    <div class="column is-mobile">
+    <div class="column is-mobile" id='history'>
       <p style="color: aqua; font-size: 25px; margin: 15px; margin-top: 0px;">Search History</p>
     </div>
   </div>

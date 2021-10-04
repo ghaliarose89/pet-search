@@ -2,7 +2,8 @@ var animalType= document.getElementById('animal-type');
 var imgBox= document.getElementById('imgBox');
 var catFact= document.getElementById('cats-container');
 var resultContainer= document.getElementById('container');
-
+var zipCode = document.getElementById ('zip-Code');
+var historyBox = document.getElementById('history');
 function getCats() {
      //get value of zipcode field
      let zip = document.getElementById('77056');
@@ -188,6 +189,12 @@ body: JSON.stringify(options)
         catsArray.push(cats[value])
 
         }
+        var resultTitle=document.createElement('div');
+        resultTitle.className = "result-title";
+        resultContainer.appendChild(resultTitle);
+        
+        resultTitle.innerHTML="<h2> Future Pet List </h2><hr>";
+
         console.log(catsArray);
         // loop through the cat array and add the field values to the page
         catsArray.forEach((cat) => {
@@ -208,13 +215,30 @@ body: JSON.stringify(options)
 
 }
 
+ function saveSearch() {
+     var zip = zipCode.value.trim();
+     var searchArr = JSON.parse(localStorage.getItem("zipcode")) ||[];
+     searchArr.push(zip);
+     localStorage.setItem('zipcode',JSON.stringify(searchArr));
+     console.log(searchArr);
+    var histBtn = document.createElement('button');
+    histBtn.classList="btn hist-text";
+    histBtn.innerHTML= "<h3>Zip Code :"+zip+ "<h3>";
+    historyBox.appendChild(histBtn);
+     
+
+    
+}
+
 var searchBtn= document.getElementById('search-now');
 searchBtn.addEventListener('click', function (){
-    imgBox.innerHTML="";
-    catFact.innerHTML="";
-    getUserSearch();
     clearInterval(catTimer);
     clearInterval(dogTimer);
+    imgBox.innerHTML="";
+    catFact.innerHTML="";
+    saveSearch();
+    getUserSearch();
+   
 });
 
 var catTimer = setInterval( catImg ,4000);
