@@ -1,12 +1,13 @@
-
-
-
+var animalType= document.getElementById('animal-type');
+var imgBox= document.getElementById('imgBox');
+var catFact= document.getElementById('cats-container');
+var resultContainer= document.getElementById('container');
 
 function getCats() {
      // get value of zipcode field
-     let zip = document.getElementById('77056');
-     let zipCode = zip.value;
-     console.log(zipCode);
+     //let zip = document.getElementById('77056');
+     //let zipCode = zip.value;
+     //console.log(zipCode);
      var options = {
          "apikey": "ntjbOl80",
          "objectType": "animals",
@@ -14,7 +15,7 @@ function getCats() {
          "search": {
              "calcFoundRows": "Yes",
              "resultStart": 0,
-             "resultLimit": 50,
+             "resultLimit": 8,
              "fields": [
                 "animalID",
                 "animalOrgID",
@@ -38,7 +39,7 @@ function getCats() {
                  {
                      "fieldName": "animalLocation",
                      "operation": "equals",
-                     "criteria": "zipCode" // use user zipcode input in search
+                     "criteria": "77441" // use user zipcode input in search
                  },
              ]
          }
@@ -130,11 +131,6 @@ function dogImg (){
 };
 
 
-
-var animalType= document.getElementById('animal-type');
-// var petType= animalType.value;
-// console.log(petType);
-
 function getUserSearch(){
     var petType=animalType.value;
     var options = {
@@ -144,7 +140,7 @@ function getUserSearch(){
         "search": {
             "calcFoundRows": "Yes",
             "resultStart": 0,
-            "resultLimit": 100,
+            "resultLimit": 8,
             "fields": [
                 "animalID",
                 "animalOrgID",
@@ -163,7 +159,7 @@ function getUserSearch(){
                 {
                     "fieldName": "animalSpecies",
                     "operation": "equals",
-                    "criteria": "petType"
+                    "criteria": "Cat"
                 },
             ]
         }}
@@ -174,19 +170,42 @@ method: 'post',
 body: JSON.stringify(options)
 
 }).then(function(response) {
-   
-    return response.json();
-}).then(function(data) {
-    console.log(data);
+   return response.json();
+}).then(function(response) {
+    let cats = response.data
+    // make new empty array
+    let catsArray = []
+    for (const value in cats) {
+        // push in the cat objects
+        catsArray.push(cats[value])
+
+        }
+        console.log(catsArray);
+        // loop through the cat array and add the field values to the page
+        catsArray.forEach((cat) => {
+    var resultBox = document.createElement('div');
+    var result=document.createElement('div');
+    resultContainer.appendChild(resultBox);
+    resultBox.appendChild(result);
+   result.innerHTML='<p>'+cat.animalName+'</p>';
+        })
+
    
 }); 
+
 
 }
 
 var searchBtn= document.getElementById('search-now');
-searchBtn.addEventListener('click', getUserSearch());
+searchBtn.addEventListener('click', function (){
+    imgBox.innerHTML="";
+    catFact.innerHTML="";
+    getUserSearch();
+    clearInterval(catTimer);
+    clearInterval(dogTimer);
+});
 
-setInterval( catImg , 2000);
-setInterval( dogImg , 2000);
+var catTimer = setInterval( catImg ,4000);
+var dogTimer = setInterval( dogImg ,4000);
 
 

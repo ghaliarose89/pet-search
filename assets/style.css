@@ -74,7 +74,9 @@ footer{
     border-radius: 20px;
     border:thistle 3px solid;
     background-color: #00d1b2;;
-    height: 100px;
+    font-size: large;
+    font-weight: bold;
+    height: 135px;
     width: 1000px;
     margin-left: 28%;
     margin-top: 20px;
@@ -82,4 +84,17 @@ footer{
 
 .h2{
     size: 50px;
+}
+.btn{
+    color: azure; 
+    border-radius: 20px;
+    background-color:thistle;
+     font-size: 25; 
+     font-weight:bold; 
+     padding: 5px; 
+     margin-top: 1px;
+}
+.hidden{
+    visibility: hidden;
+
 }
