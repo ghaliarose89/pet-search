@@ -6,9 +6,9 @@ var zipCode = document.getElementById ('zip-Code');
 var historyBox = document.getElementById('history');
 function getCats() {
      //get value of zipcode field
-     let zip = document.getElementById('77056');
-     let zipCode = zip.value;
-     console.log(zipCode);
+     let zip = document.getElementById('ZipCode');
+     let ZipCode = zip.value;
+     console.log(ZipCode);
      var options = {
          "apikey": "ntjbOl80",
          "objectType": "animals",
@@ -41,7 +41,7 @@ function getCats() {
                  {
                      "fieldName": "animalLocation",
                      "operation": "equals",
-                     "criteria": "77441" // use user zipcode input in search
+                     "criteria": "zipCode" 
                  },
                  
              ]
@@ -68,7 +68,8 @@ function getCats() {
              // loop through the cat array and add the field values to the page
              catsArray.forEach((cat) => {
                  var responseContainerEl = document.getElementById('cats-container');
-                var printCat = document.createElement('div');                 // make image element and set it to the url from the data
+                 var printCat = document.createElement('div');
+                 // make image element and set it to the url from the data
                  var catImage = document.createElement('img');
                  catImage.setAttribute('src', cat.animalThumbnailUrl)
                  // add all the values you want here
@@ -105,7 +106,26 @@ function getCatFact() {
         });
 
 }
+function getDogFact() {
+    var res = fetch('https://dog-api.kinduff.com/api/facts')
+
     
+        .then(function (response) {
+
+            return response.json();
+        })
+         .then(function (response) {
+        console.log(response.facts);
+        var responseContainerEl = document.querySelector('#response-container2');
+            responseContainerEl.innerHTML = '';
+            var facts = document.createElement('div');
+            facts.innerHTML = response.facts;
+            responseContainerEl.appendChild(facts);
+        });
+
+}
+   
+
         
 function catImg (){
     var apiCatImg= fetch ('https://aws.random.cat/meow')
