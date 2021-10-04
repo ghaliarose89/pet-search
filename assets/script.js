@@ -183,11 +183,12 @@ body: JSON.stringify(options)
         console.log(catsArray);
         // loop through the cat array and add the field values to the page
         catsArray.forEach((cat) => {
-    var resultBox = document.createElement('div');
     var result=document.createElement('div');
-    resultContainer.appendChild(resultBox);
-    resultBox.appendChild(result);
-   result.innerHTML='<p>'+cat.animalName+'</p>';
+    resultContainer.removeClass=("img-box");
+    result.classList=("result-cards");
+    resultContainer.appendChild(result);
+   result.innerHTML='<p><strong> Cat Name:</strong> '+cat.animalName+'</p>';
+   result.innerHTML+='<p><strong> AnimalBreed:</strong> '+cat.animalBreed+'</p>';
         })
 
    
