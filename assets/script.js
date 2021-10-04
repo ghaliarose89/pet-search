@@ -4,10 +4,10 @@ var catFact= document.getElementById('cats-container');
 var resultContainer= document.getElementById('container');
 
 function getCats() {
-     // get value of zipcode field
-     //let zip = document.getElementById('77056');
-     //let zipCode = zip.value;
-     //console.log(zipCode);
+     //get value of zipcode field
+     let zip = document.getElementById('77056');
+     let zipCode = zip.value;
+     console.log(zipCode);
      var options = {
          "apikey": "ntjbOl80",
          "objectType": "animals",
@@ -23,7 +23,8 @@ function getCats() {
                  "animalSpecies",
                  "animalBreed",
                 "animalThumbnailUrl",
-                "animalLocation"
+                "animalLocation",
+                
              ],
             "filters": [
                 {
@@ -41,6 +42,7 @@ function getCats() {
                      "operation": "equals",
                      "criteria": "77441" // use user zipcode input in search
                  },
+                 
              ]
          }
      };
@@ -148,7 +150,8 @@ function getUserSearch(){
                 "animalSpecies",
                 "animalBreed",
                 "animalThumbnailUrl",
-                "animalLocation"
+                "animalLocation",
+                //"locationPhone"
             ],
             "filters": [
                 {
@@ -161,6 +164,11 @@ function getUserSearch(){
                     "operation": "equals",
                     "criteria": "Cat"
                 },
+                // {
+                //     "fieldName": "locationPhone",
+                //     "operation": "equals",
+                //     "criteria": "Available"
+                //  },
             ]
         }}
 
@@ -189,7 +197,10 @@ body: JSON.stringify(options)
     resultContainer.appendChild(result);
    result.innerHTML='<p><strong> Cat Name:</strong> '+cat.animalName+'</p>';
    result.innerHTML+='<p><strong> AnimalBreed:</strong> '+cat.animalBreed+'</p>';
-        })
+   result.innerHTML+='<p><strong> Zip Code:</strong> '+cat.animalLocation+'</p>';
+   result.innerHTML+='<p><strong> Picute:</strong><img src='+cat.animalThumbnailUrl+'+/>+</p>';
+   
+ })
 
    
 }); 
