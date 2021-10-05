@@ -28,24 +28,27 @@ function getCatFact() {
         });
 
 }
+
 function getDogFact() {
     fetch('https://dog-api.kinduff.com/api/facts', {
-        
-            
-        }) .then(function (response) {
 
-            return response.json();
-        })
-                .then(function (response) {
-                    console.log(response.facts);
-                    var responseContainerEl = document.querySelector('#response-container2');
-                    responseContainerEl.innerHTML = '';
-                    var facts = document.createElement('div');
-                    facts.innerHTML = response.facts;
-                    responseContainerEl.appendChild(facts);
-                });
-    
+       
+
+        
+    }).then(function (response) {
+
+        return response.json();
+    })
+        .then(function (response) {
+            console.log(response.facts);
+            var responseContainerEl = document.querySelector('#response-container2');
+            responseContainerEl.innerHTML = '';
+            var facts = document.createElement('div');
+            facts.innerHTML = response.facts;
+            responseContainerEl.appendChild(facts);
+        });
 }
+
    
 
         
@@ -91,7 +94,7 @@ function getUserSearch(saveZip, saveType) {
         return;
     }
     var petType = animalType.value;
-   // let phone = locationPhone.value;
+   let phone = locationPhone.value;
     var options = {
         "apikey": "ntjbOl80",
         "objectType": "animals",
@@ -108,7 +111,7 @@ function getUserSearch(saveZip, saveType) {
                 "animalBreed",
                 "animalThumbnailUrl",
                 "animalLocation",
-               // "locationPhone"
+                "locationPhone"
             ],
             "filters": [
                 {
@@ -132,11 +135,11 @@ function getUserSearch(saveZip, saveType) {
                     "operation": "equals",
                     "criteria": zip
                 },
-               // {
-                    //"fieldName": "locationPhone",
-                    //"operation": "equals",
-                   // "criteria":  phone
-           // },
+                {
+                    "fieldName": "locationPhone",
+                    "operation": "equals",
+                    "criteria":  phone
+            },
             ]
         }
     }
@@ -177,7 +180,7 @@ function getUserSearch(saveZip, saveType) {
             catImage.setAttribute('src', cat.animalThumbnailUrl)
             result.innerHTML += '<p><strong> Cat Name:</strong> ' + cat.animalName + '</p>';
             result.innerHTML += '<p><strong> AnimalBreed:</strong> ' + cat.animalBreed + '</p>';
-          // result.innerHTML += '<p><strong> Phone:</strong> ' + cat.locationPhone + '</p>';
+            result.innerHTML += '<p><strong> Phone:</strong> ' + cat.locationPhone + '</p>';
             result.innerHTML += '<p><strong> Zip Code:</strong> ' + cat.animalLocation + '</p>';
             result.innerHTML += '<p><strong>Cat image:</strong>'
             result.appendChild(catImage);
