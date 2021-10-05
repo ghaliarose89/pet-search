@@ -1,88 +1,13 @@
 var animalType= document.getElementById('animal-type');
 var imgBox= document.getElementById('imgBox');
 var catFact= document.getElementById('cats-container');
-var resultContainer= document.getElementById('container');
-var zipCode = document.getElementById ('zip-Code');
+var resultContainer= document.getElementById('search-container');
+var zipCode = document.getElementById('zip-Code')
 var historyBox = document.getElementById('history');
-function getCats() {
-     //get value of zipcode field
-     let zip = document.getElementById('ZipCode');
-     let ZipCode = zip.value;
-     console.log(ZipCode);
-     var options = {
-         "apikey": "ntjbOl80",
-         "objectType": "animals",
-         "objectAction": "publicSearch",
-         "search": {
-             "calcFoundRows": "Yes",
-             "resultStart": 0,
-             "resultLimit": 8,
-             "fields": [
-                "animalID",
-                "animalOrgID",
-                 "animalName",
-                 "animalSpecies",
-                 "animalBreed",
-                "animalThumbnailUrl",
-                "animalLocation",
-                
-             ],
-            "filters": [
-                {
-                     "fieldName": "animalStatus",
-                     "operation": "equals",
-                     "criteria": "Available"
-                 },
-                 {
-                     "fieldName": "animalLocationDistance",
-                     "operation": "radius",
-                    "criteria": "50"
-                },
-                 {
-                     "fieldName": "animalLocation",
-                     "operation": "equals",
-                     "criteria": "zipCode" 
-                 },
-                 
-             ]
-         }
-     };
-     fetch('https://api.rescuegroups.org/http/json', {
-         method: 'post',
-         dataType: "jsonp",
-         body: JSON.stringify(options)
-     }).then(function (response) {
-         // make results readable
-         return response.json();
-    }).then(function (response) {
-         // set cats to the data field returned
-         let cats = response.data
-         // make new empty array
-         let catsArray = []
-         for (const value in cats) {
-             // push in the cat objects
-             catsArray.push(cats[value])
+window.onload=loadSearchbtns()
+     
+     
 
-             }
-             console.log(catsArray);
-             // loop through the cat array and add the field values to the page
-             catsArray.forEach((cat) => {
-                 var responseContainerEl = document.getElementById('cats-container');
-                 var printCat = document.createElement('div');
-                 // make image element and set it to the url from the data
-                 var catImage = document.createElement('img');
-                 catImage.setAttribute('src', cat.animalThumbnailUrl)
-                 // add all the values you want here
-                 printCat.innerHTML += '<strong>Name: </strong>' + cat.animalName
-                 printCat.innerHTML += '<strong>Breeed: </strong>' + cat.animalBreed
-                 // append the image
-                 printCat.appendChild(catImage)
-                 // print to page
-                 responseContainerEl.appendChild(printCat);
-             })
-         });
-     }
-    
 
   
        
@@ -107,16 +32,11 @@ function getCatFact() {
 function getDogFact() {
     fetch('https://dog-api.kinduff.com/api/facts', {
         
-            method: 'post',
-            dataType: "jsonp",
-            headers: "Access-Control-Allow-Origin",
-             body: JSON.stringify
-    
-    
+            
         }) .then(function (response) {
 
-                return response.json();
-            })
+            return response.json();
+        })
                 .then(function (response) {
                     console.log(response.facts);
                     var responseContainerEl = document.querySelector('#response-container2');
@@ -157,7 +77,12 @@ function dogImg (){
 };
 
 
-function getUserSearch() {
+function getUserSearch(saveZip, saveType) {
+    resultContainer.innerHTML = ''
+    let zip = zipCode.value;
+    if (saveZip) {
+         zip = saveZip
+    }
     var petType = animalType.value;
     var options = {
         "apikey": "ntjbOl80",
@@ -186,14 +111,18 @@ function getUserSearch() {
                 {
                     "fieldName": "animalSpecies",
                     "operation": "equals",
-                    "criteria": "Cat"
+                    "criteria": petType
                 },
-             
-                // {
-                //     "fieldName": "locationPhone",
-                //     "operation": "equals",
-                //     "criteria": "Available"
-                //  },
+                {
+                    "fieldName": "animalLocationDistance",
+                    "operation": "radius",
+                    "criteria": "50"
+                },
+                {
+                   "fieldName": "animalLocation",
+                   "operation": "equals",
+                   "criteria": zip 
+                },
             ]
         }
     }
@@ -201,12 +130,14 @@ function getUserSearch() {
 
     var res = fetch('https://api.rescuegroups.org/http/v2.json', {
         method: 'post',
+        dataType: 'jsonp',
         body: JSON.stringify(options)
 
     }).then(function (response) {
         return response.json();
     }).then(function (response) {
         let cats = response.data
+        console.log(cats);
         // make new empty array
         let catsArray = []
         for (const value in cats) {
@@ -226,98 +157,18 @@ function getUserSearch() {
             var result = document.createElement('div');
             resultContainer.removeClass = ("img-box");
             result.classList = ("result-cards");
-            resultContainer.appendChild(result);
-            result.innerHTML = '<p><strong> Cat Name:</strong> ' + cat.animalName + '</p>';
+           var catImage = document.createElement('img');
+            catImage.setAttribute('src', cat.animalThumbnailUrl)
+            result.innerHTML += '<p><strong> Cat Name:</strong> ' + cat.animalName + '</p>';
             result.innerHTML += '<p><strong> AnimalBreed:</strong> ' + cat.animalBreed + '</p>';
             result.innerHTML += '<p><strong> Zip Code:</strong> ' + cat.animalLocation + '</p>';
-            result.innerHTML += '<p><strong> Picute:</strong><img src=' + cat.animalThumbnailUrl + '+/>+</p>';
+            result.appendChild(catImage)
+            resultContainer.appendChild(result);
    
         })
 
    
     });
-    function getUserSearch() {
-        var petType = animalType.value;
-        var options = {
-            "apikey": "ntjbOl80",
-            "objectType": "animals",
-            "objectAction": "publicSearch",
-            "search": {
-                "calcFoundRows": "Yes",
-                "resultStart": 0,
-                "resultLimit": 8,
-                "fields": [
-                    "animalID",
-                    "animalOrgID",
-                    "animalName",
-                    "animalSpecies",
-                    "animalBreed",
-                    "animalThumbnailUrl",
-                    "animalLocation",
-                    //"locationPhone"
-                ],
-                "filters": [
-                    {
-                        "fieldName": "animalStatus",
-                        "operation": "equals",
-                        "criteria": "Available"
-                    },
-                    {
-                        "fieldName": "animalSpecies",
-                        "operation": "equals",
-                        "criteria": "Cat"
-                    },
-             
-                    // {
-                    //     "fieldName": "locationPhone",
-                    //     "operation": "equals",
-                    //     "criteria": "Available"
-                    //  },
-                ]
-            }
-        }
-
-
-        var res = fetch('https://api.rescuegroups.org/http/v2.json', {
-            method: 'post',
-            body: JSON.stringify(options)
-
-        }).then(function (response) {
-            return response.json();
-        }).then(function (response) {
-            let Dogs = response.data
-            console.log (response.data)
-            let dogsArray = []
-            for (const value in Dogs) {
-                // push in the dog objects
-                dogsArray.push(Dogs[value])
-
-            }
-            var resultTitle = document.createElement('div');
-            resultTitle.className = "result-title";
-            resultContainer.appendChild(resultTitle);
-        
-            resultTitle.innerHTML = "<h2> Future Pet List </h2><hr>";
-
-            console.log(dogsArray);
-            // loop through the cat array and add the field values to the page
-            dogsArray.forEach((Dog) => {
-                var result = document.createElement('div');
-                resultContainer.removeClass = ("img-box");
-                result.classList = ("result-cards");
-                resultContainer.appendChild(result);
-                result.innerHTML = '<p><strong> Cat Name:</strong> ' + Dog.animalName + '</p>';
-                result.innerHTML += '<p><strong> AnimalBreed:</strong> ' + Dog.animalBreed + '</p>';
-                result.innerHTML += '<p><strong> Zip Code:</strong> ' + Dog.animalLocation + '</p>';
-                result.innerHTML += '<p><strong> Picute:</strong><img src=' + Dog.animalThumbnailUrl + '+/>+</p>';
-   
-            })
-
-   
-        });
-  
-
-    }
 }
 
     function saveSearch() {
@@ -328,26 +179,44 @@ function getUserSearch() {
         console.log(searchArr);
         var histBtn = document.createElement('button');
         histBtn.classList = "btn hist-text";
+        histBtn.setAttribute('data-zip', zip)
         histBtn.innerHTML = "<h3>Zip Code :" + zip + "<h3>";
         historyBox.appendChild(histBtn);
+        histBtn.addEventListener("click", function(e) {
+            var zipsearch = e.target.getAttribute("data-zip")
+            getUserSearch(zipsearch)
+
+        
+           });
      
 
     
     }
-    function saveSearch() {
+    function loadSearchbtns() {
         var zip = zipCode.value.trim();
         var searchArr = JSON.parse(localStorage.getItem("zipcode")) || [];
         searchArr.push(zip);
         localStorage.getItem('zipcode', JSON.stringify(searchArr));
         console.log(searchArr);
+        //TODO:loop through search arr to create multiple buttons
         var histBtn = document.createElement('button');
         histBtn.classList = "btn hist-text";
+        histBtn.setAttribute('data-zip', zip)
         histBtn.innerHTML = "<h3>Zip Code :" + zip + "<h3>";
         historyBox.appendChild(histBtn);
-    
+        histBtn.addEventListener("click", function(e) {
+            var zipsearch = e.getAttribute("data-zip")
+            getUserSearch(zipsearch)
+
+        
+            });
 
    
-    }
+     }
+
+
+
+    
 
 
     var searchBtn = document.getElementById('search-now');
