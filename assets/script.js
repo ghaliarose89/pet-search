@@ -4,6 +4,7 @@ var catFact= document.getElementById('cats-container');
 var resultContainer= document.getElementById('search-container');
 var zipCode = document.getElementById('zip-Code')
 var historyBox = document.getElementById('history');
+//var locationPhone = document.getElementById('phone');
 window.onload=loadSearchbtns()
      
      
@@ -84,6 +85,7 @@ function getUserSearch(saveZip, saveType) {
          zip = saveZip
     }
     var petType = animalType.value;
+   // let phone = locationPhone.value;
     var options = {
         "apikey": "ntjbOl80",
         "objectType": "animals",
@@ -100,7 +102,7 @@ function getUserSearch(saveZip, saveType) {
                 "animalBreed",
                 "animalThumbnailUrl",
                 "animalLocation",
-                //"locationPhone"
+               // "locationPhone"
             ],
             "filters": [
                 {
@@ -119,10 +121,15 @@ function getUserSearch(saveZip, saveType) {
                     "criteria": "50"
                 },
                 {
-                   "fieldName": "animalLocation",
-                   "operation": "equals",
-                   "criteria": zip 
+                    "fieldName": "animalLocation",
+                    "operation": "equals",
+                    "criteria": zip
                 },
+               // {
+                    //"fieldName": "locationPhone",
+                    //"operation": "equals",
+                   // "criteria":  phone
+           // },
             ]
         }
     }
@@ -161,6 +168,7 @@ function getUserSearch(saveZip, saveType) {
             catImage.setAttribute('src', cat.animalThumbnailUrl)
             result.innerHTML += '<p><strong> Cat Name:</strong> ' + cat.animalName + '</p>';
             result.innerHTML += '<p><strong> AnimalBreed:</strong> ' + cat.animalBreed + '</p>';
+          // result.innerHTML += '<p><strong> Phone:</strong> ' + cat.locationPhone + '</p>';
             result.innerHTML += '<p><strong> Zip Code:</strong> ' + cat.animalLocation + '</p>';
             result.appendChild(catImage)
             resultContainer.appendChild(result);
