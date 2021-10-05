@@ -85,6 +85,20 @@ input {
     margin-left: 28%;
     margin-top: 20px;
 }
+.alert {
+    border-radius: 20px;
+    border:thistle 3px solid;
+    background-color: #00d1b2;;
+    font-size: 30px;
+    font-weight: bold;
+    height: 135px;
+    width: 1000px;
+     margin-left: 28%; 
+ 
+    text-align: center;
+    padding: 15px;
+
+}
 
 .h2{
     size: 50px;
