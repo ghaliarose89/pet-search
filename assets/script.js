@@ -252,5 +252,3 @@ searchBtn.addEventListener('click', function () {
 
 var catTimer = setInterval(catImg, 3000);
 var dogTimer = setInterval(dogImg, 3000);
-
-
