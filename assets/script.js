@@ -4,13 +4,11 @@ var catFact= document.getElementById('cats-container');
 var resultContainer= document.getElementById('search-container');
 var zipCode = document.getElementById('zip-Code')
 var historyBox = document.getElementById('history');
-//var locationPhone = document.getElementById('phone');
-window.onload=loadSearchbtns()
-     
-     
+var dogFact=document.getElementById('dogs-container');
+window.onload=loadSearchbtns();
+//loadSearchbtns();
 
-
-  
+     
        
 function getCatFact() {
     var res = fetch('https://catfact.ninja/fact')
@@ -82,7 +80,15 @@ function getUserSearch(saveZip, saveType) {
     resultContainer.innerHTML = ''
     let zip = zipCode.value;
     if (saveZip) {
-         zip = saveZip
+         zip = saveZip;
+    }
+    else{
+        var alertBox= document.createElement('div');
+        alertBox.className='fact';
+        catFact.appendChild(alertBox);
+        alertBox.innerHTML ='<img src="https://img.icons8.com/ios-glyphs/30/000000/error--v2.png"/><p><strong> Please enter a Zipcode and select a pet to see the results</strong></p>';
+
+        return;
     }
     var petType = animalType.value;
    // let phone = locationPhone.value;
@@ -110,6 +116,7 @@ function getUserSearch(saveZip, saveType) {
                     "operation": "equals",
                     "criteria": "Available"
                 },
+                
                 {
                     "fieldName": "animalSpecies",
                     "operation": "equals",
@@ -143,7 +150,7 @@ function getUserSearch(saveZip, saveType) {
     }).then(function (response) {
         return response.json();
     }).then(function (response) {
-        let cats = response.data
+        let cats = response.data;
         console.log(cats);
         // make new empty array
         let catsArray = []
@@ -165,12 +172,15 @@ function getUserSearch(saveZip, saveType) {
             resultContainer.removeClass = ("img-box");
             result.classList = ("result-cards");
            var catImage = document.createElement('img');
+            catImg.classList="img-result";
+           
             catImage.setAttribute('src', cat.animalThumbnailUrl)
             result.innerHTML += '<p><strong> Cat Name:</strong> ' + cat.animalName + '</p>';
             result.innerHTML += '<p><strong> AnimalBreed:</strong> ' + cat.animalBreed + '</p>';
           // result.innerHTML += '<p><strong> Phone:</strong> ' + cat.locationPhone + '</p>';
             result.innerHTML += '<p><strong> Zip Code:</strong> ' + cat.animalLocation + '</p>';
-            result.appendChild(catImage)
+            result.innerHTML += '<p><strong>Cat image:</strong>'
+            result.appendChild(catImage);
             resultContainer.appendChild(result);
    
         })
@@ -191,8 +201,8 @@ function getUserSearch(saveZip, saveType) {
         histBtn.innerHTML = "<h3>Zip Code :" + zip + "<h3>";
         historyBox.appendChild(histBtn);
         histBtn.addEventListener("click", function(e) {
-            var zipsearch = e.target.getAttribute("data-zip")
-            getUserSearch(zipsearch)
+            var zipsearch = e.target.getAttribute("data-zip");
+            getUserSearch(zipsearch);
 
         
            });
@@ -213,8 +223,8 @@ function getUserSearch(saveZip, saveType) {
         histBtn.innerHTML = "<h3>Zip Code :" + zip + "<h3>";
         historyBox.appendChild(histBtn);
         histBtn.addEventListener("click", function(e) {
-            var zipsearch = e.getAttribute("data-zip")
-            getUserSearch(zipsearch)
+            var zipsearch = e.getAttribute("data-zip");
+            getUserSearch(zipsearch);
 
         
             });
@@ -222,23 +232,20 @@ function getUserSearch(saveZip, saveType) {
    
      }
 
-
-
     
-
-
     var searchBtn = document.getElementById('search-now');
     searchBtn.addEventListener('click', function () {
         clearInterval(catTimer);
         clearInterval(dogTimer);
         imgBox.innerHTML = "";
         catFact.innerHTML = "";
+        dogFact.innerHTML ="";
         saveSearch();
         getUserSearch();
    
     });
 
-    var catTimer = setInterval(catImg, 4000);
-    var dogTimer = setInterval(dogImg, 4000);
+    var catTimer = setInterval(catImg, 3000);
+    var dogTimer = setInterval(dogImg, 3000);
 
 
