@@ -28,13 +28,13 @@ function getCatFact() {
 
 }
 function getDogFact() {
-    fetch('https://dog-api.kinduff.com/api/facts', {
+    fetch('https://dog-api.kinduff.com/api/facts')
 
 
-    }).then(function (response) {
+        .then(function (response) {
 
-        return response.json();
-    })
+            return response.json();
+        })
         .then(function (response) {
             console.log(response.facts);
             var responseContainerEl = document.querySelector('#response-container2');
@@ -81,7 +81,7 @@ function getUserSearch(saveZip, saveType) {
     if (saveZip) {
 
     }
-
+    // Alert the user!
     // else {
     //     var alertBox = document.createElement('div');
     //         alertBox.className = 'alert';
@@ -205,25 +205,30 @@ function saveSearch() {
 }
 function loadSearchbtns() {
     var zip = zipCode.value.trim();
-    var searchArr = JSON.parse(localStorage.getItem("zipcode")) || [];
-    searchArr.push(zip);
-    localStorage.getItem('zipcode', JSON.stringify(searchArr));
-    console.log(searchArr);
-    //TODO:loop through search arr to create multiple buttons
-    var histBtn = document.createElement('button');
-    histBtn.classList = "btn hist-text";
-    histBtn.setAttribute('data-zip', zip)
-    histBtn.innerHTML = "<h3>Zip Code :" + zip + "<h3>";
-    historyBox.appendChild(histBtn);
-    histBtn.addEventListener("click", function (e) {
-        var zipsearch = e.getAttribute("data-zip");
-        getUserSearch(zipsearch);
 
+    searchArr = JSON.parse(localStorage.getItem("zipcode")) || [];
+    
+    for (var i = 0; i < searchArr.length; i++) {
+        var histBtn = document.createElement("button");
+        histBtn.setAttribute("id", searchArr[i]);
+        histBtn.classList = "btn";
+        histBtn.innerHTML = searchArr[i];
+        historyBox.append(histBtn);
+        historyBox.addEventListener("click", function (event) {
+            var zipsearch = event.target.getAttribute("id");
+            if (zipsearch) {
+                clearInterval(catTimer);
+                clearInterval(dogTimer);
+                getUserSearch(zipsearch);
+                imgBox.innerHTML = "";
+                catFact.innerHTML = "";
+                dogFact.innerHTML = "";
 
-    });
+            }
 
-
-}
+        });
+    }
+};
 
 
 var searchBtn = document.getElementById('search-now');
