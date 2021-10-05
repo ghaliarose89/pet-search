@@ -113,11 +113,16 @@ input {
     color: azure;
 }
 .result-cards{
-    border: solid, wheat, 2px;
-    border-radius: 3px;
-    height: 250px;
+    padding: 10px;
+    border: solid rgb(243, 240, 235) 2px;
+    border-radius: 4px;
+    height: 350px;
     width: 250px; 
     background-color: thistle;
     margin: 15px;
     padding:5px
+}
+.img-result{
+    width: 100px;
+    height: 100px;
 }
