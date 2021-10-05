@@ -52,7 +52,7 @@
             <select id="animal-type">
               <option style="font-size: 20px; color: black;" value=""></option>
               <option style="font-size: 20px; color: black;" value="Cat">Cats</option>
-              <option style="font-size: 20px; color: black;" value="Dog">Dogs</option>
+              <option style="font-size: 20px; color: black;"Id="Dog" value="Dog">Dogs</option>
             </select>
           </div>
         </div>
@@ -69,7 +69,7 @@
     </div>
 
     <!-- middle side -->
-    <div class="img-box container-flex columns is-mobile" id="container">
+    <div class="img-box container-flex columns is-mobile" id="search-container">
       <div class="container-flex" id="imgBox">
         <img src="./assets/picuters/Yellow_Cat_Eye_Superb_Picture.jpg" alt="cat-pic" class="img" id="imgCat" />
         <img src="./assets/picuters/DOG.jpg" alt="dog-pic" class="img" id="imgDog"  />
@@ -82,6 +82,12 @@
       <div class="fact" id="fact"><button onclick="getCatFact()" class=" btn">click
          me for cat facts <img src="https://img.icons8.com/ios-glyphs/30/000000/pets.png" /></button>
         <div id="response-container"></div>
+      </div>
+    </div>
+    <div class="container-flex column is-mobile" id="dogs-container">
+      <div class="fact" id="fact"><button onclick="getDogFact()" class=" btn">click
+         me for dog facts <img src="https://img.icons8.com/ios-glyphs/30/000000/pets.png" /></button>
+        <div id="response-container2"></div>
       </div>
     </div>
 
