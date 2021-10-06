@@ -85,6 +85,7 @@ input {
     margin-left: 28%;
     margin-top: 20px;
 }
+
 .alert {
     border-radius: 20px;
     border:thistle 3px solid;
@@ -93,8 +94,7 @@ input {
     font-weight: bold;
     height: 135px;
     width: 1000px;
-     margin-left: 28%; 
- 
+    margin-left: 28%; 
     text-align: center;
     padding: 15px;
 
@@ -103,28 +103,45 @@ input {
 .h2{
     size: 50px;
 }
+
 .btn{
     color: azure; 
     border-radius: 20px;
     background-color:thistle;
-     font-size: 25; 
+     font-size: large; 
      font-weight:bold; 
      padding: 5px; 
      margin-top: 1px;
 }
+.btn-hist{
+    height: 50px;
+    width:max-content;
+    color: azure; 
+    border-radius: 20px;
+    background-color:thistle;
+     font-size: large; 
+     font-weight:bold; 
+     padding: 5px; 
+     margin-top: 10px;
+}
+
 .hist-text {
     font-size: 25;
 
 }
-.hidden{
-    visibility: hidden;
 
+.history-flex{
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
 }
+
 .result-title{
     font-size: 35px;
     font-weight: bolder;
     font-style: underline;
     color: azure;
+
 }
 .result-cards{
     padding: 10px;
@@ -136,6 +153,7 @@ input {
     margin: 15px;
     padding:5px
 }
+
 .img-result{
     width: 100px;
     height: 100px;
