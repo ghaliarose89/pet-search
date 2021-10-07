@@ -32,6 +32,7 @@ footer{
     font-size: larger;
     text-align: center;
 }
+
 .footertitle{
     color:#00d1b2;
 }
@@ -158,3 +159,37 @@ input {
     width: 100px;
     height: 100px;
 }
+
+@media screen and (max-width: 992px) {
+    body {
+      background-color: blue;
+      color: white;
+    }
+  }
+  
+
+@media only screen and (max-width: 600px)  {
+    footer{
+
+        color: green;
+        background-color:thistle;
+        margin-top: 15%;
+        height: 90px;
+        font-size: larger;
+        text-align: center;
+    }
+    .fact {
+        border-radius: 20px;
+        border:thistle 3px solid;
+        background-color: #00d1b2;;
+        font-size:15px;
+        font-weight: bold;
+        height: 50px;
+        width: 300px;
+        margin-left: 28%;
+        margin-top: 30px;
+    }
+}
+
+
+  
