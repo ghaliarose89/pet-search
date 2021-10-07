@@ -6,7 +6,6 @@ var zipCode = document.getElementById('zip-Code')
 var historyBox = document.getElementById('history');
 var dogFact = document.getElementById('dogs-container');
 window.onload = loadSearchbtns();
-//loadSearchbtns();
 
 
 function getCatFact() {
@@ -27,25 +26,6 @@ function getCatFact() {
         });
 
 }
-// function getDogFact() {
-//     fetch('https://dog-api.kinduff.com/api/facts')
-
-
-//         .then(function (response) {
-
-//             return response.json();
-//         })
-//         .then(function (response) {
-//             //console.log(response.facts);
-//             var responseContainerEl = document.querySelector('#response-container2');
-//             responseContainerEl.innerHTML = '';
-//             var facts = document.createElement('div');
-//             facts.innerHTML = response.facts;
-//             responseContainerEl.appendChild(facts);
-//         });
-
-// }
-
 
 
 function catImg() {
@@ -80,8 +60,7 @@ function getUserSearch(saveZip, petType) {
 
     let zip = saveZip ? saveZip : zipCode.value
     let pet = petType ? petType : animalType.value
-    // var petType = animalType.value;
-    //Alert the user!
+    //Alert the user for null input!
     if (!zip || !pet) {
         var alertBox = document.createElement('div');
         alertBox.classList = 'alert is-mobile';
@@ -146,7 +125,6 @@ function getUserSearch(saveZip, petType) {
         return response.json();
     }).then(function (response) {
         let cats = response.data;
-        //console.log(cats);
         // make new empty array
         let catsArray = []
         for (const value in cats) {
@@ -157,10 +135,7 @@ function getUserSearch(saveZip, petType) {
         var resultTitle = document.createElement('div');
         resultTitle.className = "result-title";
         resultContainer.appendChild(resultTitle);
-
         resultTitle.innerHTML = "<h2> Future Pet List </h2><hr>";
-
-        // console.log(catsArray);
         // loop through the cat array and add the field values to the page
         catsArray.forEach((cat) => {
             var result = document.createElement('div');
@@ -171,7 +146,6 @@ function getUserSearch(saveZip, petType) {
             catImage.setAttribute('src', cat.animalThumbnailUrl)
             result.innerHTML += '<p><strong> Cat Name:</strong> ' + cat.animalName + '</p>';
             result.innerHTML += '<p><strong> AnimalBreed:</strong> ' + cat.animalBreed + '</p>';
-            // result.innerHTML += '<p><strong> Phone:</strong> ' + cat.locationPhone + '</p>';
             result.innerHTML += '<p><strong> Zip Code:</strong> ' + cat.animalLocation + '</p>';
             result.innerHTML += '<p><strong>Cat image:</strong>'
             result.appendChild(catImage);
@@ -184,8 +158,10 @@ function getUserSearch(saveZip, petType) {
 }
 
 function saveSearch() {
+
     var zip = zipCode.value.trim();
     var petType = animalType.value;
+
     if (zip){
         var searchArr = JSON.parse(localStorage.getItem("zipcode")) || [];
         searchArr.push({ zipcode: zip, petType: petType });//
@@ -200,17 +176,12 @@ function saveSearch() {
     
 
     }
-    else{
-        console.log("no zip");
-    }
     
 }
 
 function loadSearchbtns() {
 
     
-     //console.log(event);
-    // var petType = animalType.value;
     searchArr = JSON.parse(localStorage.getItem("zipcode")) || [];
     console.log(searchArr);
     for (var i = 0; i < searchArr.length; i++) {
@@ -220,17 +191,13 @@ function loadSearchbtns() {
         histBtn.classList = "btn-hist";
         histBtn.setAttribute("data-zip", searchArr[i].zipcode);
         histBtn.setAttribute("data-type", searchArr[i].petType);
-       // histBtn.innerHTML = "<h3>Zip Code :" + searchArr[i].zipcode + "<h3>";
-        histBtn.innerText = "Zip code :" + searchArr[i].zipcode;
+        histBtn.innerText = "Zip Code :" + searchArr[i].zipcode;
         historyBox.append(histBtn);
         histBtn.addEventListener("click", function (event) {
-            console.log(event.target);
             clearInterval(catTimer);
             clearInterval(dogTimer);
             var zipsearch = event.target.getAttribute("data-zip");
             var pet = event.target.getAttribute("data-type");
-            console.log(zipsearch);
-            console.log(pet);
             if (zipsearch && pet) {
                 // console.log(zipsearch);
                 // console.log(pet);
