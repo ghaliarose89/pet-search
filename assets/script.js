@@ -11,18 +11,18 @@ window.onload = loadSearchbtns();
 function getCatFact() {
     var res = fetch('https://catfact.ninja/fact')
 
-//create promise to get response
+        //create promise to get response
         .then(function (response) {
-//get response from API
+            //get response from API
             return response.json();
             //return the response to be readable
         })
         .then(function (response) {
-           //setting a varable to equal the response container div
+            //setting a varable to equal the response container div
             var responseContainerEl = document.querySelector('#response-container');
-           //setting the content to blank, to clear out the previous cat fact
+            //setting the content to blank, to clear out the previous cat fact
             responseContainerEl.innerHTML = '';
-// creating an element to set to the page
+            // creating an element to set to the page
             var fact = document.createElement('div');
             //naming the div "catFact"
             fact.className = "catFact"
@@ -64,7 +64,7 @@ function dogImg() {
 
 function getUserSearch(saveZip, petType) {
     resultContainer.innerHTML = ''
-//if else statments
+    //if else statments
     let zip = saveZip ? saveZip : zipCode.value
     let pet = petType ? petType : animalType.value
     //Alert the user for null input!
@@ -117,7 +117,7 @@ function getUserSearch(saveZip, petType) {
                     "operation": "equals",
                     "criteria": zip
                 },
-                
+
             ]
         }
     }
@@ -133,7 +133,7 @@ function getUserSearch(saveZip, petType) {
         return response.json();
     }).then(function (response) {
         //turning the object of objects into an array of objects
-     let cats = response.data;
+        let cats = response.data;
         // make new empty array
         let catsArray = []
         for (const value in cats) {
@@ -159,7 +159,7 @@ function getUserSearch(saveZip, petType) {
             result.innerHTML += '<p><strong> AnimalBreed:</strong> ' + cat.animalBreed + '</p>';
             result.innerHTML += '<p><strong> Zip Code:</strong> ' + cat.animalLocation + '</p>';
             result.innerHTML += '<p><strong>Cat image:</strong>'
-           //put the element into the container
+            //put the element into the container
             result.appendChild(catImage);
             resultContainer.appendChild(result);
 
@@ -174,7 +174,7 @@ function saveSearch() {
     var zip = zipCode.value.trim();
     var petType = animalType.value;
 
-    if (zip){
+    if (zip) {
         var searchArr = JSON.parse(localStorage.getItem("zipcode")) || [];
         searchArr.push({ zipcode: zip, petType: petType });//
         localStorage.setItem('zipcode', JSON.stringify(searchArr));
@@ -185,15 +185,15 @@ function saveSearch() {
         histBtn.setAttribute('data-type', petType);
         histBtn.innerHTML = "<h3>Zip Code :" + zip + "<h3>";
         historyBox.appendChild(histBtn);
-    
+
 
     }
-    
+
 }
 
 function loadSearchbtns() {
 
-    
+
     searchArr = JSON.parse(localStorage.getItem("zipcode")) || [];
     console.log(searchArr);
     for (var i = 0; i < searchArr.length; i++) {
