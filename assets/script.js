@@ -131,11 +131,7 @@ function getUserSearch(saveZip, petType) {
                     "operation": "equals",
                     "criteria": zip
                 },
-                // {
-                //"fieldName": "locationPhone",
-                //"operation": "equals",
-                // "criteria":  phone
-                // },
+                
             ]
         }
     }
@@ -225,7 +221,7 @@ function loadSearchbtns() {
         histBtn.setAttribute("data-zip", searchArr[i].zipcode);
         histBtn.setAttribute("data-type", searchArr[i].petType);
        // histBtn.innerHTML = "<h3>Zip Code :" + searchArr[i].zipcode + "<h3>";
-        histBtn.innerText =  searchArr[i].zipcode;
+        histBtn.innerText = "Zip code :" + searchArr[i].zipcode;
         historyBox.append(histBtn);
         histBtn.addEventListener("click", function (event) {
             console.log(event.target);
