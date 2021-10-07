@@ -23,8 +23,8 @@ A simple and friendly app that allows the following:
 
 ## Instructions:
 Home page and search results will look like the following snips:
-![ScreenShot](https://imgur.com/9dYkcdD)
-![ScreenShot](./assets/picuters/Capture1.JPG)
+![ScreenShot](https://imgur.com/9dYkcdD) click to see the sinp.
+![ScreenShot](https://imgur.com/afIxkcm) click to see the sinp.
 
 ## Website
 https://ghaliarose89.github.io/pet-search/
