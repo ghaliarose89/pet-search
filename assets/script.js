@@ -21,6 +21,7 @@ function getCatFact() {
             var responseContainerEl = document.querySelector('#response-container');
             responseContainerEl.innerHTML = '';
             var fact = document.createElement('div');
+            fact.className="catFact"
             fact.innerHTML = response.fact;
             responseContainerEl.appendChild(fact);
         });

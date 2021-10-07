@@ -160,36 +160,92 @@ input {
     height: 100px;
 }
 
-@media screen and (max-width: 992px) {
-    body {
-      background-color: blue;
-      color: white;
-    }
-  }
-  
-
-@media only screen and (max-width: 600px)  {
-    footer{
-
-        color: green;
-        background-color:thistle;
-        margin-top: 15%;
-        height: 90px;
-        font-size: larger;
-        text-align: center;
-    }
+@media screen and (max-width: 980px) {
     .fact {
-        border-radius: 20px;
-        border:thistle 3px solid;
-        background-color: #00d1b2;;
+       
         font-size:15px;
         font-weight: bold;
-        height: 50px;
-        width: 300px;
-        margin-left: 28%;
-        margin-top: 30px;
+        height: 100px;
+        width: 500px;
+       
     }
+    .btn{
+       
+         font-size: 10px; 
+        
+        
+
+    }
+    .catFact{
+        font-size: 11px;
+    }
+    footer{
+
+       
+        height: 90px;
+        
+    }
+
+
+}
+  
+
+@media  screen and (max-width: 768px)  {
+
+
+    .fact {
+       
+        font-size:15px;
+        font-weight: bold;
+        height: 100px;
+        width: 500px;
+       
+    }
+    .btn{
+       
+         font-size: 10px; 
+        
+        
+
+    }
+    .catFact{
+        font-size: 11px;
+    }
+    
+    footer{
+
+       
+        height: 90px;
+        
+    }
+
 }
 
 
-  
+@media screen and (max-width: 575px) {
+    .fact {
+       
+        font-size:15px;
+        font-weight: bold;
+        height: 100px;
+        width: 500px;
+       
+    }
+    .btn{
+       
+         font-size: 10px; 
+        
+        
+
+    }
+    .catFact{
+        font-size: 11px;
+    }
+    footer{
+
+       
+        height: 90px;
+        
+    }
+
+}
