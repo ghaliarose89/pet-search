@@ -31,6 +31,9 @@ click to see the sinp.
 ## Website
 https://ghaliarose89.github.io/pet-search/
 
+## Presentation
+https://docs.google.com/presentation/d/1mOMkWhQRvlllya9SosvTTz81VwXQXrdaJQc2VhJpoc8/edit#slide=id.p
+
 ### Contribution
 Made with ❤️️ by Ghalia Sami, Jennifer Devane, and
     Keyla Meregildo.
