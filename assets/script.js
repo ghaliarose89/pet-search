@@ -6,7 +6,6 @@ var zipCode = document.getElementById('zip-Code')
 var historyBox = document.getElementById('history');
 var dogFact = document.getElementById('dogs-container');
 window.onload = loadSearchbtns();
-//loadSearchbtns();
 
 
 function getCatFact() {
@@ -18,34 +17,16 @@ function getCatFact() {
             return response.json();
         })
         .then(function (response) {
-            console.log(response.fact);
+            //console.log(response.fact);
             var responseContainerEl = document.querySelector('#response-container');
             responseContainerEl.innerHTML = '';
             var fact = document.createElement('div');
+            fact.className="catFact"
             fact.innerHTML = response.fact;
             responseContainerEl.appendChild(fact);
         });
 
 }
-function getDogFact() {
-    fetch('https://dog-api.kinduff.com/api/facts')
-
-
-        .then(function (response) {
-
-            return response.json();
-        })
-        .then(function (response) {
-            console.log(response.facts);
-            var responseContainerEl = document.querySelector('#response-container2');
-            responseContainerEl.innerHTML = '';
-            var facts = document.createElement('div');
-            facts.innerHTML = response.facts;
-            responseContainerEl.appendChild(facts);
-        });
-
-}
-
 
 
 function catImg() {
@@ -75,23 +56,21 @@ function dogImg() {
 };
 
 
-function getUserSearch(saveZip, saveType) {
+function getUserSearch(saveZip, petType) {
     resultContainer.innerHTML = ''
-    let zip = zipCode.value;
-    if (saveZip) {
+
+    let zip = saveZip ? saveZip : zipCode.value
+    let pet = petType ? petType : animalType.value
+    //Alert the user for null input!
+    if (!zip || !pet) {
+        var alertBox = document.createElement('div');
+        alertBox.classList = 'alert is-mobile';
+        catFact.appendChild(alertBox);
+        alertBox.innerHTML = '<img src="https://img.icons8.com/color-glass/30/000000/warning-shield.png"/><p><strong> Please enter a Zipcode and select a pet to see the results</strong></p>';
+        return;
 
     }
-    // Alert the user!
-    // else {
-    //     var alertBox = document.createElement('div');
-    //         alertBox.className = 'alert';
-    //         catFact.appendChild(alertBox);
-    //         alertBox.innerHTML = '<img src="https://img.icons8.com/color-glass/30/000000/warning-shield.png"/><p><strong> Please enter a Zipcode and select a pet to see the results</strong></p>';
-    //         return;
 
-    // }
-    var petType = animalType.value;
-   // let phone = locationPhone.value;
     var options = {
         "apikey": "ntjbOl80",
         "objectType": "animals",
@@ -99,7 +78,7 @@ function getUserSearch(saveZip, saveType) {
         "search": {
             "calcFoundRows": "Yes",
             "resultStart": 0,
-            "resultLimit": 8,
+            "resultLimit": 10,
             "fields": [
                 "animalID",
                 "animalOrgID",
@@ -108,7 +87,7 @@ function getUserSearch(saveZip, saveType) {
                 "animalBreed",
                 "animalThumbnailUrl",
                 "animalLocation",
-               // "locationPhone"
+                "locationPhone"
             ],
             "filters": [
                 {
@@ -120,7 +99,7 @@ function getUserSearch(saveZip, saveType) {
                 {
                     "fieldName": "animalSpecies",
                     "operation": "equals",
-                    "criteria": petType
+                    "criteria": pet
                 },
                 {
                     "fieldName": "animalLocationDistance",
@@ -132,11 +111,7 @@ function getUserSearch(saveZip, saveType) {
                     "operation": "equals",
                     "criteria": zip
                 },
-               // {
-                    //"fieldName": "locationPhone",
-                    //"operation": "equals",
-                   // "criteria":  phone
-           // },
+                
             ]
         }
     }
@@ -151,7 +126,6 @@ function getUserSearch(saveZip, saveType) {
         return response.json();
     }).then(function (response) {
         let cats = response.data;
-        console.log(cats);
         // make new empty array
         let catsArray = []
         for (const value in cats) {
@@ -162,10 +136,7 @@ function getUserSearch(saveZip, saveType) {
         var resultTitle = document.createElement('div');
         resultTitle.className = "result-title";
         resultContainer.appendChild(resultTitle);
-
         resultTitle.innerHTML = "<h2> Future Pet List </h2><hr>";
-
-        console.log(catsArray);
         // loop through the cat array and add the field values to the page
         catsArray.forEach((cat) => {
             var result = document.createElement('div');
@@ -173,11 +144,9 @@ function getUserSearch(saveZip, saveType) {
             result.classList = "result-cards";
             var catImage = document.createElement('img');
             catImg.classList = "img-result";
-
             catImage.setAttribute('src', cat.animalThumbnailUrl)
             result.innerHTML += '<p><strong> Cat Name:</strong> ' + cat.animalName + '</p>';
             result.innerHTML += '<p><strong> AnimalBreed:</strong> ' + cat.animalBreed + '</p>';
-          // result.innerHTML += '<p><strong> Phone:</strong> ' + cat.locationPhone + '</p>';
             result.innerHTML += '<p><strong> Zip Code:</strong> ' + cat.animalLocation + '</p>';
             result.innerHTML += '<p><strong>Cat image:</strong>'
             result.appendChild(catImage);
@@ -190,46 +159,52 @@ function getUserSearch(saveZip, saveType) {
 }
 
 function saveSearch() {
+
     var zip = zipCode.value.trim();
-    var searchArr = JSON.parse(localStorage.getItem("zipcode")) || [];
-    searchArr.push(zip);
-    localStorage.setItem('zipcode', JSON.stringify(searchArr));
-    console.log(searchArr);
-    var histBtn = document.createElement('button');
-    histBtn.classList = "btn hist-text";
-    histBtn.setAttribute('data-zip', zip)
-    histBtn.innerHTML = "<h3>Zip Code :" + zip + "<h3>";
-    historyBox.appendChild(histBtn);
-    histBtn.addEventListener("click", function (e) {
-        var zipsearch = e.target.getAttribute("data-zip");
-        getUserSearch(zipsearch);
+    var petType = animalType.value;
 
-
-    });
-
-
-
-}
-function loadSearchbtns() {
-    var zip = zipCode.value.trim();
-
-    searchArr = JSON.parse(localStorage.getItem("zipcode")) || [];
+    if (zip){
+        var searchArr = JSON.parse(localStorage.getItem("zipcode")) || [];
+        searchArr.push({ zipcode: zip, petType: petType });//
+        localStorage.setItem('zipcode', JSON.stringify(searchArr));
+        //console.log(searchArr);
+        var histBtn = document.createElement('button');
+        histBtn.className = "btn-hist";
+        histBtn.setAttribute('data-zip', zip);
+        histBtn.setAttribute('data-type', petType);
+        histBtn.innerHTML = "<h3>Zip Code :" + zip + "<h3>";
+        historyBox.appendChild(histBtn);
     
+
+    }
+    
+}
+
+function loadSearchbtns() {
+
+    
+    searchArr = JSON.parse(localStorage.getItem("zipcode")) || [];
+    console.log(searchArr);
     for (var i = 0; i < searchArr.length; i++) {
+        console.log(searchArr[i].zipcode);
+        console.log(searchArr[i].petType);
         var histBtn = document.createElement("button");
-        histBtn.setAttribute("id", searchArr[i]);
-        histBtn.classList = "btn";
-        histBtn.innerHTML = searchArr[i];
+        histBtn.classList = "btn-hist";
+        histBtn.setAttribute("data-zip", searchArr[i].zipcode);
+        histBtn.setAttribute("data-type", searchArr[i].petType);
+        histBtn.innerText = "Zip Code :" + searchArr[i].zipcode;
         historyBox.append(histBtn);
-        historyBox.addEventListener("click", function (event) {
-            var zipsearch = event.target.getAttribute("id");
-            if (zipsearch) {
-                clearInterval(catTimer);
-                clearInterval(dogTimer);
-                getUserSearch(zipsearch);
+        histBtn.addEventListener("click", function (event) {
+            clearInterval(catTimer);
+            clearInterval(dogTimer);
+            var zipsearch = event.target.getAttribute("data-zip");
+            var pet = event.target.getAttribute("data-type");
+            if (zipsearch && pet) {
+                // console.log(zipsearch);
+                // console.log(pet);
+                getUserSearch(zipsearch, pet);
                 imgBox.innerHTML = "";
                 catFact.innerHTML = "";
-                dogFact.innerHTML = "";
 
             }
 
@@ -244,7 +219,6 @@ searchBtn.addEventListener('click', function () {
     clearInterval(dogTimer);
     imgBox.innerHTML = "";
     catFact.innerHTML = "";
-    dogFact.innerHTML = "";
     saveSearch();
     getUserSearch();
 

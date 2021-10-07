@@ -125,6 +125,7 @@ input {
     font-weight: bolder;
     font-style: underline;
     color: azure;
+    vertical-align: top;
 }
 .result-cards{
     padding: 10px;
