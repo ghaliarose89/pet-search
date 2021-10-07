@@ -190,37 +190,45 @@ function getUserSearch(saveZip, petType) {
 function saveSearch() {
     var zip = zipCode.value.trim();
     var petType = animalType.value;
+    if (zip){
+        var searchArr = JSON.parse(localStorage.getItem("zipcode")) || [];
+        searchArr.push({ zipcode: zip, petType: petType });//
+        localStorage.setItem('zipcode', JSON.stringify(searchArr));
+        //console.log(searchArr);
+        var histBtn = document.createElement('button');
+        histBtn.className = "btn-hist";
+        histBtn.setAttribute('data-zip', zip);
+        histBtn.setAttribute('data-type', petType);
+        histBtn.innerHTML = "<h3>Zip Code :" + zip + "<h3>";
+        historyBox.appendChild(histBtn);
+    
 
-    var searchArr = JSON.parse(localStorage.getItem("zipcode")) || [];
-    searchArr.push({ zipcode: zip, petType: petType });//
-    localStorage.setItem('zipcode', JSON.stringify(searchArr));
-    //console.log(searchArr);
-    var histBtn = document.createElement('button');
-    histBtn.className = "btn-hist";
-    histBtn.setAttribute('data-zip', zip);
-    histBtn.setAttribute('data-type', petType);
-    histBtn.innerHTML = "<h3>Zip Code :" + zip + "<h3>";
-    historyBox.appendChild(histBtn);
-
+    }
+    else{
+        console.log("no zip");
+    }
+    
 }
 
 function loadSearchbtns() {
 
-    var zipSea = zipCode.value.trim();
-    // console.log(zip);
+    
+     //console.log(event);
     // var petType = animalType.value;
     searchArr = JSON.parse(localStorage.getItem("zipcode")) || [];
     console.log(searchArr);
     for (var i = 0; i < searchArr.length; i++) {
-        console.log(searchArr[i].zip);
+        console.log(searchArr[i].zipcode);
         console.log(searchArr[i].petType);
         var histBtn = document.createElement("button");
         histBtn.classList = "btn-hist";
-        histBtn.setAttribute("data-zip", searchArr[i].zip);
+        histBtn.setAttribute("data-zip", searchArr[i].zipcode);
         histBtn.setAttribute("data-type", searchArr[i].petType);
-        histBtn.innerHTML = "<h3>Zip Code :" + searchArr[i].zip + "<h3>";
+       // histBtn.innerHTML = "<h3>Zip Code :" + searchArr[i].zipcode + "<h3>";
+        histBtn.innerText =  searchArr[i].zipcode;
         historyBox.append(histBtn);
         histBtn.addEventListener("click", function (event) {
+            console.log(event.target);
             clearInterval(catTimer);
             clearInterval(dogTimer);
             var zipsearch = event.target.getAttribute("data-zip");
