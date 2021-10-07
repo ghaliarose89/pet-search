@@ -1,10 +1,36 @@
 # Pet Search 
-A simple and friendly app that searches for the user's future pet (dog/cat) to rescue a pet from the shelter.
-the user can search based on sex and location too.
-This app also provides random facts about cats and dogs along side saving the history search that the user made
-# instructions
-When using this app you need to select cat or dog, enter the location and select the sex of the animal.
-The list of animals should pull up after you press search.
-the ones you viewed will show up below the search icon for your personal knowlege.
-you can also access random dog and cat facts from this page, by clicking on the cute dog and cat pictures on the homepage.
 
+## Purpose:
+Search for a pet (Cat/Dog) depending on the user Zip Code.
+
+
+### Description:
+A simple and friendly app that allows the following:
+* searches for the user's future pet (dog/cat) to rescue a pet from the shelter.
+* The user can search based on location and pet type.
+* provides random facts about cats.
+* provides random images about cats and dogs.
+* saving the history search that the user made.
+
+# instructions
+
+* The app is provided with a friendly Home page that has two photos containers and displays rundown cats and dogs pictures.
+* When a user clicks on the 'Click me for cat facts' button, a random cat fact will display.
+* Searching needs to select cat or dog from the drop-down menu then
+* Enter the Zip Code and the app will search results in 50 miles.
+* The list of animals should pull up after pressing on the search now.
+* When results are displayed, the previous search will be saved as a button with a label of the Zip code that was entered under History Search.
+
+## Instructions:
+Home page and search results will look like the following snips:
+![ScreenShot](assets\picuters\Capture1.JPG)
+![ScreenShot](assets\picuters\Capture2.JPG)
+
+## Website
+https://ghaliarose89.github.io/pet-search/
+
+### Contribution
+Made with ❤️️ by Ghalia Mukhalalatti, Jennifer Devane, and
+    Keyla Meregildo.
+
+### ©️ [2021] [Ghalia Jennifer Keyla]

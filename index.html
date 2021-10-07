@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <link rel="stylesheet" href="assets/style.css" />
 
-  <title>Pet Search</title>
+  <title>PET Search</title>
   <link rel="icon" href="https://img.icons8.com/ios-glyphs/30/000000/dog-muzzle.png" type="image/icon type">
 </head>
 
@@ -19,7 +19,7 @@
 
         <p style="color: thistle; font-size: 40px; font-weight: bolder; ">
           <img src="https://img.icons8.com/glyph-neue/30/000000/cat-footprint.png" />
-          Pet Search
+          PET Search
           <img src="https://img.icons8.com/glyph-neue/30/000000/cat-footprint.png" />
         </p>
         <p class="subtitle header-title" style=" font-weight:bolder; font-size:20;">
@@ -33,7 +33,7 @@
   </header>
 
   <!-- Form side -->
-  <div class="container-flex columns is-mobile">
+  <div class="container-flex is-mobile">
     <div id="form" class="form">
       <div class="container">
         <label class="label" style="font-size: 20px; color: azure">Enter your Zip code</label>
@@ -52,7 +52,7 @@
             <select id="animal-type">
               <option style="font-size: 20px; color: black;" value=""></option>
               <option style="font-size: 20px; color: black;" value="Cat">Cats</option>
-              <option style="font-size: 20px; color: black;"Id="Dog" value="Dog">Dogs</option>
+              <option style="font-size: 20px; color: black;" Id="Dog" value="Dog">Dogs</option>
             </select>
           </div>
         </div>
@@ -72,38 +72,33 @@
     <div class="img-box container-flex columns is-mobile" id="search-container">
       <div class="container-flex" id="imgBox">
         <img src="./assets/picuters/Yellow_Cat_Eye_Superb_Picture.jpg" alt="cat-pic" class="img" id="imgCat" />
-        <img src="./assets/picuters/DOG.jpg" alt="dog-pic" class="img" id="imgDog"  />
+        <img src="./assets/picuters/4fd6b8650dedea8e851bcf67f7c6b703.jfif" alt="dog-pic" class="img" id="imgDog" />
       </div>
     </div>
 
   </div>
-  <div>
-    <div class="container-flex column is-mobile" id="cats-container">
-      <div class="fact" id="fact"><button onclick="getCatFact()" class=" btn">click
-         me for cat facts <img src="https://img.icons8.com/ios-glyphs/30/000000/pets.png" /></button>
-        <div id="response-container"></div>
-      </div>
-    </div>
-    <div class="container-flex column is-mobile" id="dogs-container">
-      <div class="fact" id="dogfact"><button onclick="getDogFact()" class=" btn">click
-         me for dog facts <img src="https://img.icons8.com/ios-glyphs/30/000000/pets.png" /></button>
-        <div id="response-container2"></div>
-      </div>
-    </div>
-
-    <!-- History Section -->
-    <div class="column is-mobile" id='history'>
-      <p style="color: aqua; font-size: 25px; margin: 15px; margin-top: 0px;">Search History</p>
+  <div class="container-flex>
+    <div class=" container-flex column is-mobile" id="cats-container">
+    <div class="fact is-mobile" id="fact"><button onclick="getCatFact()" class=" btn">click
+        me for cat facts <img src="https://img.icons8.com/ios-glyphs/30/000000/pets.png" /></button>
+      <div id="response-container" class="is-mobile"></div>
     </div>
   </div>
 
 
-  <footer class=" is-mobile" >
+  <!-- History Section -->
+  <div class=" is-mobile history-flex" id='history'>
+    <h2 style="color: aqua; font-size: 25px; margin: 15px; margin-top: 0px; font-style:underline;">Search History</h2>
+  </div>
+  </div>
+
+
+  <footer class=" is-mobile">
     <div class="content has-text-centered is-mobile">
 
-      <p style="padding-top: 10px;">
+      <p class=" is-mobile" style="padding-top: 10px;">
         <img src="https://img.icons8.com/glyph-neue/30/000000/cat-footprint.png" />
-        <strong class="footertitle">Pet Search Made with ❤️️ By: </strong> Ghalia Mukhalalaltti, Jennifer Devane, and
+        <strong class="footertitle">PET Search Made with ❤️️ By: </strong> Ghalia Mukhalalaltti, Jennifer Devane, and
         Keyla Meregildo. <img src="https://img.icons8.com/glyph-neue/30/000000/cat-footprint.png" />
       </p>
 
