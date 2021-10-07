@@ -11,18 +11,24 @@ window.onload = loadSearchbtns();
 function getCatFact() {
     var res = fetch('https://catfact.ninja/fact')
 
-
+//create promise to get response
         .then(function (response) {
-
+//get response from API
             return response.json();
+            //return the response to be readable
         })
         .then(function (response) {
-            //console.log(response.fact);
+           //setting a varable to equal the response container div
             var responseContainerEl = document.querySelector('#response-container');
+           //setting the content to blank, to clear out the previous cat fact
             responseContainerEl.innerHTML = '';
+// creating an element to set to the page
             var fact = document.createElement('div');
-            fact.className="catFact"
+            //naming the div "catFact"
+            fact.className = "catFact"
+            //setting the content to the response
             fact.innerHTML = response.fact;
+            //append div to the response container
             responseContainerEl.appendChild(fact);
         });
 
@@ -58,7 +64,7 @@ function dogImg() {
 
 function getUserSearch(saveZip, petType) {
     resultContainer.innerHTML = ''
-
+//if else statments
     let zip = saveZip ? saveZip : zipCode.value
     let pet = petType ? petType : animalType.value
     //Alert the user for null input!
@@ -120,12 +126,14 @@ function getUserSearch(saveZip, petType) {
     var res = fetch('https://api.rescuegroups.org/http/v2.json', {
         method: 'post',
         dataType: 'jsonp',
+        //converts objects into a string
         body: JSON.stringify(options)
 
     }).then(function (response) {
         return response.json();
     }).then(function (response) {
-        let cats = response.data;
+        //turning the object of objects into an array of objects
+     let cats = response.data;
         // make new empty array
         let catsArray = []
         for (const value in cats) {
@@ -144,11 +152,14 @@ function getUserSearch(saveZip, petType) {
             result.classList = "result-cards";
             var catImage = document.createElement('img');
             catImg.classList = "img-result";
+            //set the image attribute sorce to the cat animal thumbnail
             catImage.setAttribute('src', cat.animalThumbnailUrl)
+            //adding all the options that want to be displayed
             result.innerHTML += '<p><strong> Cat Name:</strong> ' + cat.animalName + '</p>';
             result.innerHTML += '<p><strong> AnimalBreed:</strong> ' + cat.animalBreed + '</p>';
             result.innerHTML += '<p><strong> Zip Code:</strong> ' + cat.animalLocation + '</p>';
             result.innerHTML += '<p><strong>Cat image:</strong>'
+           //put the element into the container
             result.appendChild(catImage);
             resultContainer.appendChild(result);
 
@@ -212,7 +223,7 @@ function loadSearchbtns() {
     }
 };
 
-
+//clearing interval for first page
 var searchBtn = document.getElementById('search-now');
 searchBtn.addEventListener('click', function () {
     clearInterval(catTimer);
@@ -223,6 +234,6 @@ searchBtn.addEventListener('click', function () {
     getUserSearch();
 
 });
-
+//every three seconds fire off the cat /dog images
 var catTimer = setInterval(catImg, 3000);
 var dogTimer = setInterval(dogImg, 3000);
